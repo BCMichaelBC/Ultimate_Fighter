@@ -14,17 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
-    width: 1920
-    height: 997
+
+    x: 7.3333335
+    y: 53.333336
+    width: 1440
+    height: 776
+
   m_ShowMode: 4
   m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 1
---- !u!114 &2
+  m_Maximized: 0
+
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,6 +50,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+
   controlID: 28
 --- !u!114 &3
 MonoBehaviour:
@@ -64,12 +67,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1489
+    x: 1117.3334
     y: 0
-    width: 431
-    height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 322.66663
+    height: 726
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -92,10 +95,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 329
-    height: 653
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+
+    width: 247.33333
+    height: 501.33334
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -218,6 +222,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+
     width: 1489
     height: 947
   m_MinSize: {x: 200, y: 200}
@@ -243,6 +248,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+
     width: 1489
     height: 653
   m_MinSize: {x: 200, y: 100}
@@ -296,6 +302,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+
     x: 0
     y: 726
     width: 1488
@@ -317,13 +324,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Backgrounds
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Backgrounds
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Winson\Documents\GitHub\Ultimate_Fighter
   m_LockTracker:
@@ -333,6 +340,7 @@ MonoBehaviour:
     m_SelectedIDs: 305d0000
     m_LastClickedID: 23856
     m_ExpandedIDs: 000000001e5d000000ca9a3bffffff7f
+
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,6 +368,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+
     m_ExpandedIDs: 000000001e5d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -436,6 +445,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+
     x: 1489
     y: 73
     width: 430
@@ -490,7 +500,9 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+
       m_ExpandedIDs: dee5ffff60e7ffff3ae8ffff80e8ffff28ebffff6ceeffffb2eeffff5cf3ffff9af3ffffd8f3ffff02f9ffff40f9ffff7ef9ffffbcf9fffffaf9ffff26fbffff
+
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -761,6 +773,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+
     m_Target: {x: 2.0839586, y: -0.35739762, z: 0.027552458}
     speed: 2
     m_Value: {x: 2.0839586, y: -0.35739762, z: 0.027552458}
@@ -921,6 +934,7 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+
       x: -579
       y: -305.5
       width: 1158
@@ -928,6 +942,7 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1158, y: 632}
+
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
