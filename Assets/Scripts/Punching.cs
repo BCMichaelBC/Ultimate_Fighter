@@ -10,14 +10,14 @@ public class Punching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Key to attack might change later down the line
+        //Key to attack, subjected to change
         if(Input.GetKey("x"))
         {
             Punch();
 
         }
     }
-    // Punch Function. Need to be updated once enemy , collision , and animations are introduced. 
+    // Need to be updated once the assets are there
     void Punch()
     {
 
