@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2156123483828537361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2156123483828537367}
+  - component: {fileID: 2156123483828537366}
+  m_Layer: 0
+  m_Name: PreviewAmy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2156123483828537367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2156123483828537361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7223482, y: -4.6230326, z: -4.341667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2156123483828537366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2156123483828537361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abaa5adef9ec45bf7ba51e1a9487cfde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Amy
+  Annoying: {fileID: 21300000, guid: 7157bb5de7535e2c9a3336a6d0833617, type: 3}
+  Groggy: {fileID: 21300000, guid: 9aa0a2707f0abd8478dd2082c0d4a5f7, type: 3}
+  Hit: {fileID: 21300000, guid: c0f72782deebb3db8a6afe384f9a07e2, type: 3}
+  Win: {fileID: 21300000, guid: 93c78155ef215cbddbd6e033a97f23b4, type: 3}
+  Lose: {fileID: 21300000, guid: bf8ee7f7fac6bd496adf057e1921b9f8, type: 3}
+  Attack0: {fileID: 21300000, guid: 92931459ab13de5f98319cb0dc42d50a, type: 3}
+  Attack1: {fileID: 21300000, guid: 4772020d55b5baf2490be18ad8b7de02, type: 3}
+  Attack2: {fileID: 21300000, guid: 363e721f1ef732481a3e2e9d38ad8929, type: 3}
+  Portrait: {fileID: 21300000, guid: e99c94c3c4f45b0a88355a3edb8779aa, type: 3}
+  PortraitLose: {fileID: 21300000, guid: 84150e8d73aa522d8ac93db1f7d509a0, type: 3}
+  Stand: {fileID: 21300000, guid: 84f0a6c535fa923ccb7ac1d0e1824095, type: 3}
