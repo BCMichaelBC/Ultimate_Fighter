@@ -1626,6 +1626,9 @@ MonoBehaviour:
   rigid: {fileID: 0}
   movement: 0
   walkspeed: 5
+  jumpPressed: 0
+  jumpForce: 500
+  isGrounded: 1
 --- !u!114 &1437395747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,7 +2035,7 @@ GameObject:
   - component: {fileID: 2083711935}
   m_Layer: 6
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
