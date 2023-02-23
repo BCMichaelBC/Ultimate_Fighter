@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     //for the reactions 
     public void onTriggerEnter(Collider other)
     {
-        //play animation and take damage
+        //play animation here and try to have the player take damage 
     }
 
     public void Jump()
