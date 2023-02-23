@@ -1191,8 +1191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.8630371, y: -1.7260132}
+  m_SizeDelta: {x: 32.7951, y: 31.0691}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953971558
 MonoBehaviour:
@@ -1626,6 +1626,9 @@ MonoBehaviour:
   rigid: {fileID: 0}
   movement: 0
   walkspeed: 5
+  jumpPressed: 0
+  jumpForce: 500
+  isGrounded: 1
 --- !u!114 &1437395747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,7 +2035,7 @@ GameObject:
   - component: {fileID: 2083711935}
   m_Layer: 6
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
