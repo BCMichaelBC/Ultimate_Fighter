@@ -145,7 +145,11 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3a7dcd6933eccbd4cba3e296ffd7a0c5, type: 3}
     m_FontSize: 18
+<<<<<<< Updated upstream
     m_FontStyle: 0
+=======
+    m_FontStyle: 2
+>>>>>>> Stashed changes
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40

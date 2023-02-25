@@ -11,6 +11,12 @@ EditorUserSettings:
     RecentlyUsedSceneGuid-1:
       value: 5607010004540c0c5c5b0a7543715b44104f1d7c2d7b2565287f4f60bbb86c69
       flags: 0
+<<<<<<< Updated upstream
+=======
+    RecentlyUsedSceneGuid-2:
+      value: 5255515303570a5a0f0f5a261521064443154d2f7b29223475784c63bab7663e
+      flags: 0
+>>>>>>> Stashed changes
   m_VCAutomaticAdd: 1
   m_VCDebugCom: 0
   m_VCDebugCmd: 0
