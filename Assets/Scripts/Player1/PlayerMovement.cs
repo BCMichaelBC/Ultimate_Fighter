@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool jumpPressed = false;
     [SerializeField] float jumpForce = 500.0f;
     [SerializeField] bool isGrounded = true;
+    [SerializeField] Animator animator;
 
     //[SerializeField] 
 
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // Getting the x values of movement from the player so if the player wants to move left or right
         movement = Input.GetAxis("Horizontal");
+
+        //Check if the player is moving, and changes the animation accordingly 
+        animator.SetFloat("Speed", Mathf.Abs(movement));
         if (Input.GetKeyDown(KeyCode.W))
             jumpPressed = true;
         
@@ -42,7 +46,10 @@ public class PlayerMovement : MonoBehaviour
         
         rigid.velocity = new Vector2(movement * walkspeed, rigid.velocity.y);
         if (jumpPressed && isGrounded)
+        {
             Jump();
+        }
+
 
     }
 
@@ -50,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     public void onTriggerEnter(Collider other)
     {
         //play animation here and try to have the player take damage 
+        animator.SetTrigger("Hit");
     }
 
     public void Jump()
@@ -58,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         // its like (x, y) when u press to jump we arent moving horizonlty but vertically
         rigid.AddForce(new Vector2(0, jumpForce));
         isGrounded = false; // not on ground any more 
+        animator.SetBool("Jumping", true);
         jumpPressed = false; // to avoid double jump
     }
 
@@ -66,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true; // youve hit the ground again
+            animator.SetBool("Jumping", false);
         }
     }
 }
