@@ -2,65 +2,93 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Combat : MonoBehaviour
 {
     public Animator animator;
+
+    public float Ldamage;
+    public float Hdamage;
+
+    public GameObject[] movementcolliders;
+
+    StateManager states;
     // Start is called before the first frame update
     void Start()
     {
+        states = GetComponent<StateManager>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.C))
+        if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.C) && !states.isPlayerOne)) // To block
         {
             animator.SetBool("Blocking", true);
-            Blocking();
         }
         else
         {
             animator.SetBool("Blocking", false);
         }
-        if (Input.GetKey(KeyCode.Z))
+
+        if ((Input.GetKey(KeyCode.S) && states.isPlayerOne) || (Input.GetKey(KeyCode.Z) && !states.isPlayerOne)) // To crouch
         {
             animator.SetBool("Crouching", true);
-            Crouching();
+            movementcolliders[0].SetActive(false);
+            if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.X) && !states.isPlayerOne)) // crouch punch
+            {
+                animator.SetBool("LPunch", true);
+                Debug.Log("You crouch punched");
+                states.SelectCombatCollider(1, 10);
+            }
+            if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.RightShift) && !states.isPlayerOne)) // crouch kick
+            {
+                animator.SetBool("LKick", true);
+                Debug.Log("You crouch kick");
+                states.SelectCombatCollider(1, 10);
+            }
         }
         else
         {
             animator.SetBool("Crouching", false);
+            movementcolliders[0].SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.Z) && !states.isPlayerOne)) // punch
         {
-            animator.SetTrigger("HPunching");
-            HPunching();
+            animator.SetBool("HPunch", true);
+            Debug.Log("You Punched");
+            states.SelectCombatCollider(0, 10);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.RightShift) && !states.isPlayerOne)) // kick
         {
-            animator.SetTrigger("LPunching");
-            LPunching();
+            animator.SetBool("LPunch", true);
+            Debug.Log("You Kicked");
+            states.SelectCombatCollider(0, 10);
+        }
+
+        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.X) && !states.isPlayerOne && !states.onGround)) // jump punch
+        {
+            animator.SetBool("LPunch", true);
+            Debug.Log("You jump punched");
+            states.SelectCombatCollider(1, 10);
+        }
+        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.RightShift) && !states.isPlayerOne && !states.onGround)) // jump kick
+        {
+            animator.SetBool("HKick", true);
+            Debug.Log("You jump kick");
+            states.SelectCombatCollider(1, 10);
         }
     }
 
-    void Blocking()
+    public void resetAnimators()
     {
-        Debug.Log("You Blocked");
+        Debug.Log("Stop");
+        //yield return new WaitForSeconds(1);
+        animator.SetBool("LPunch", false);
+        animator.SetBool("HPunch", false);
+        animator.SetBool("LKick", false);
+        animator.SetBool("HKick", false);
     }
-
-    void Crouching()
-    {
-        Debug.Log("You Crouched");
-    }
-
-    void HPunching()
-    {
-        Debug.Log("You Heavy Punched");
-    }
-
-    void LPunching()
-    {
-        Debug.Log("You Light Punched");
-    }
+     
 }

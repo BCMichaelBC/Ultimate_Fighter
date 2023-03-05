@@ -14,10 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     //[SerializeField] 
 
+    StateManager states;
 
     // Start is called before the first frame update
     void Start()
     {
+        states = GetComponent<StateManager>();
         // we do this to get the component rigid body form inspector so we can interact with it in code
         if (rigid == null)
         {
@@ -66,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         // its like (x, y) when u press to jump we arent moving horizonlty but vertically
         rigid.AddForce(new Vector2(0, jumpForce));
         isGrounded = false; // not on ground any more 
+        states.onGround = false;
         animator.SetBool("Jumping", true);
         jumpPressed = false; // to avoid double jump
     }
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true; // youve hit the ground again
+            states.onGround = true;
             animator.SetBool("Jumping", false);
         }
     }
