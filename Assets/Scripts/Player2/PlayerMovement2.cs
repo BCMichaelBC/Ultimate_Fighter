@@ -38,7 +38,7 @@ public class PlayerMovement2: MonoBehaviour
 
         //Check if the player is moving, and changes the animation accordingly 
         animator.SetFloat("Speed", Mathf.Abs(movement));
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             jumpPressed = true;
 
 
