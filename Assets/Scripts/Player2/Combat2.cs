@@ -2,64 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat : MonoBehaviour
+public class Combat2 : MonoBehaviour
 {
     public Animator animator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+ 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.J))
         {
             animator.SetBool("Blocking", true);
-            Blocking();
+            Blocking2();
         }
         else
         {
             animator.SetBool("Blocking", false);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             animator.SetBool("Crouching", true);
-            Crouching();
+            Crouching2();
         }
         else
         {
             animator.SetBool("Crouching", false);
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("HPunching");
-            HPunching();
+            HPunching2();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             animator.SetTrigger("LPunching");
-            LPunching();
+            LPunching2();
         }
     }
 
-    void Blocking()
+    void Blocking2()
     {
         Debug.Log("You Blocked");
     }
 
-    void Crouching()
+    void Crouching2()
     {
         Debug.Log("You Crouched");
     }
 
-    void HPunching()
+    void HPunching2()
     {
         Debug.Log("You Heavy Punched");
     }
 
-    void LPunching()
+    void LPunching2()
     {
         Debug.Log("You Light Punched");
     }
