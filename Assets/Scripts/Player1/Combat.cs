@@ -32,7 +32,7 @@ public class Combat : MonoBehaviour
             animator.SetBool("Blocking", false);
         }
 
-        if ((Input.GetKey(KeyCode.S) && states.isPlayerOne) || (Input.GetKey(KeyCode.Z) && !states.isPlayerOne)) // To crouch
+        if ((Input.GetKey(KeyCode.S) && states.isPlayerOne) || (Input.GetKey(KeyCode.DownArrow) && !states.isPlayerOne)) // To crouch
         {
             animator.SetBool("Crouching", true);
             movementcolliders[0].SetActive(false);
