@@ -7,9 +7,6 @@ public class Combat : MonoBehaviour
 {
     public Animator animator;
 
-    public float Ldamage;
-    public float Hdamage;
-
     public GameObject[] movementcolliders;
 
     StateManager states;
@@ -23,7 +20,7 @@ public class Combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.C) && !states.isPlayerOne)) // To block
+        if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.L) && !states.isPlayerOne)) // To block
         {
             animator.SetBool("Blocking", true);
         }
@@ -36,16 +33,16 @@ public class Combat : MonoBehaviour
         {
             animator.SetBool("Crouching", true);
             movementcolliders[0].SetActive(false);
-            if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.X) && !states.isPlayerOne)) // crouch punch
+            if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.J) && !states.isPlayerOne)) // crouch punch
             {
                 animator.SetBool("LPunch", true);
-                Debug.Log("You crouch punched");
+               // Debug.Log("You crouch punched");
                 states.SelectCombatCollider(1, 10);
             }
-            if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.RightShift) && !states.isPlayerOne)) // crouch kick
+            if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.K) && !states.isPlayerOne)) // crouch kick
             {
                 animator.SetBool("LKick", true);
-                Debug.Log("You crouch kick");
+                //Debug.Log("You crouch kick");
                 states.SelectCombatCollider(1, 10);
             }
         }
@@ -54,41 +51,42 @@ public class Combat : MonoBehaviour
             animator.SetBool("Crouching", false);
             movementcolliders[0].SetActive(true);
         }
-        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.Z) && !states.isPlayerOne)) // punch
+        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.J) && !states.isPlayerOne)) // punch
         {
             animator.SetBool("HPunch", true);
-            Debug.Log("You Punched");
+            //Debug.Log("You Punched");
             states.SelectCombatCollider(0, 10);
         }
-        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.RightShift) && !states.isPlayerOne)) // kick
+        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.K) && !states.isPlayerOne)) // kick
         {
             animator.SetBool("LPunch", true);
-            Debug.Log("You Kicked");
+           // Debug.Log("You Kicked");
             states.SelectCombatCollider(0, 10);
         }
 
-        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.X) && !states.isPlayerOne && !states.onGround)) // jump punch
+        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.J) && !states.isPlayerOne && !states.onGround)) // jump punch
         {
             animator.SetBool("LPunch", true);
-            Debug.Log("You jump punched");
+           // Debug.Log("You jump punched");
             states.SelectCombatCollider(1, 10);
         }
-        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.RightShift) && !states.isPlayerOne && !states.onGround)) // jump kick
+        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.K) && !states.isPlayerOne && !states.onGround)) // jump kick
         {
             animator.SetBool("HKick", true);
-            Debug.Log("You jump kick");
+           // Debug.Log("You jump kick");
             states.SelectCombatCollider(1, 10);
         }
+        states.CloseColliders(states.leftDamageColliders);
+        states.CloseColliders(states.rightDamageColliders);
     }
 
     public void resetAnimators()
     {
-        Debug.Log("Stop");
+        //Debug.Log("Stop");
         //yield return new WaitForSeconds(1);
         animator.SetBool("LPunch", false);
         animator.SetBool("HPunch", false);
         animator.SetBool("LKick", false);
         animator.SetBool("HKick", false);
     }
-     
 }

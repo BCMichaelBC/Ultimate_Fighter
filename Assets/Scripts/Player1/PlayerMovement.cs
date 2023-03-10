@@ -38,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(movement));
         if (Input.GetKeyDown(KeyCode.W))
             jumpPressed = true;
-        
 
+        faceOpponent();
     }
 
 // fixed update is for ui changes if chages were made in update they would look kinda cluncky
@@ -80,6 +80,18 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true; // youve hit the ground again
             states.onGround = true;
             animator.SetBool("Jumping", false);
+        }
+    }
+
+    public void faceOpponent()
+    {
+        if (transform.position.x - states.opponent.transform.position.x < 0)
+        {
+            states.lookLeft = false;
+        }
+        else
+        {
+            states.lookLeft = true;
         }
     }
 }
