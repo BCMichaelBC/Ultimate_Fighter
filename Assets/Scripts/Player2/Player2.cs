@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     public float Hp;
     public float maxHp;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     //Change it to be based on attacks
     public void TakeDamage()
     {
-        states.health -= Mathf.Min(Random.value, Hp/4f);
+        states.health -= Mathf.Min(Random.value, Hp / 4f);
         hpBar.UpdateHpBar();
     }
 

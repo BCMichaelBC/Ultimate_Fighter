@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] float movement;
@@ -25,27 +25,27 @@ public class PlayerMovement : MonoBehaviour
         {
             rigid = GetComponent<Rigidbody2D>();
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // Getting the x values of movement from the player so if the player wants to move left or right
-        movement = Input.GetAxis("Horizontal");
+        movement = Input.GetAxis("Horizontal2");
 
         //Check if the player is moving, and changes the animation accordingly 
         animator.SetFloat("Speed", Mathf.Abs(movement));
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             jumpPressed = true;
-        
+
 
     }
 
-// fixed update is for ui changes if chages were made in update they would look kinda cluncky
+    // fixed update is for ui changes if chages were made in update they would look kinda cluncky
     void FixedUpdate()
     {
-        
+
         rigid.velocity = new Vector2(movement * walkspeed, rigid.velocity.y);
         if (jumpPressed && isGrounded)
         {
