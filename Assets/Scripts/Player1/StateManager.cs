@@ -9,6 +9,8 @@ public class StateManager : MonoBehaviour
 
     public float vertical;
     public float horizontal;
+    public float Ldamage;
+    public float Hdamage;
     public bool attack1;
     public bool attack2;
     public bool attack3;
@@ -20,10 +22,11 @@ public class StateManager : MonoBehaviour
 
     public bool dontMove;
     public bool onGround;
-    public bool lookRight;
+    public bool lookLeft;
 
     public GameObject[] leftDamageColliders;
     public GameObject[] rightDamageColliders;
+    public GameObject opponent;
     SpriteRenderer sRenderer;
     // Start is called before the first frame update
     void Start()
@@ -55,12 +58,12 @@ public class StateManager : MonoBehaviour
 
     void FixedUpdate() // faces character to correct direction
     {
-        sRenderer.flipX = lookRight;
+        sRenderer.flipX = lookLeft;
     }
 
-    public void SelectCombatCollider(int direction, float time) // opens/closes hitboxes as needed
+    public void SelectCombatCollider(int direction, float time) // opens hitboxes as needed
     {
-        if (lookRight)
+        if (lookLeft)
         {
             OpenColliders(leftDamageColliders, direction, time);
         }
@@ -68,8 +71,6 @@ public class StateManager : MonoBehaviour
         {
             OpenColliders(rightDamageColliders, direction, time);
         }
-        CloseColliders(leftDamageColliders);
-        CloseColliders(rightDamageColliders);
     }
 
 
@@ -78,7 +79,7 @@ public class StateManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         collider[index].SetActive(true);
     }
-    void CloseColliders(GameObject[] colliders) // close specific colliders
+    public void CloseColliders(GameObject[] colliders) // close specific colliders
     {
         for (int i = 0; i < colliders.Length; i++)
         {

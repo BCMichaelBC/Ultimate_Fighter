@@ -21,18 +21,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Press space to take damage, playtesting purposes only
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage();
-        }*/
+        TakeDamage();
     }
 
     //Damage is either a random number or 1/4 of players current health
     //Change it to be based on attacks
     public void TakeDamage()
     {
-        states.health -= Mathf.Min(Random.value, Hp/4f);
+        states.health -= states.opponent.GetComponent<StateManager>().Ldamage;
         hpBar.UpdateHpBar();
     }
 

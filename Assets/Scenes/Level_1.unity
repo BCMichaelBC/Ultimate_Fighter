@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 470022488}
   - component: {fileID: 470022487}
   - component: {fileID: 470022486}
-  - component: {fileID: 470022493}
+  - component: {fileID: 470022495}
   - component: {fileID: 470022492}
   - component: {fileID: 470022491}
   - component: {fileID: 470022494}
@@ -1034,7 +1034,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &470022488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1117,11 +1117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 470022486}
-  Ldamage: 0
-  Hdamage: 0
   movementcolliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 374542639}
+  - {fileID: 1088776405}
 --- !u!114 &470022492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,24 +1136,8 @@ MonoBehaviour:
   movement: 0
   walkspeed: 5
   jumpPressed: 0
-  jumpForce: 300
+  jumpForce: 500
   isGrounded: 1
-  animator: {fileID: 470022486}
---- !u!114 &470022493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470022481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75817fa31dd2ee440b51cceef8d63ec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 100
-  maxHp: 100
-  hpBar: {fileID: 1027122192}
   animator: {fileID: 470022486}
 --- !u!114 &470022494
 MonoBehaviour:
@@ -1173,6 +1155,8 @@ MonoBehaviour:
   isPlayerOne: 0
   vertical: 0
   horizontal: 0
+  Ldamage: 10
+  Hdamage: 20
   attack1: 0
   attack2: 0
   attack3: 0
@@ -1182,13 +1166,30 @@ MonoBehaviour:
   currentlyAttacking: 0
   dontMove: 0
   onGround: 0
-  lookRight: 0
+  lookLeft: 1
   leftDamageColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1147398941}
+  - {fileID: 1761339096}
   rightDamageColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1798390686}
+  - {fileID: 370627710}
+  opponent: {fileID: 1437395741}
+--- !u!114 &470022495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470022481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eb0e1062e3a7542889257463809751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 100
+  maxHp: 100
+  hpBar: {fileID: 1027122192}
+  animator: {fileID: 470022486}
 --- !u!1 &477365326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,6 +2385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1221227931}
   - component: {fileID: 1221227932}
+  - component: {fileID: 1221227933}
   m_Layer: 6
   m_Name: Top Right
   m_TagString: Untagged
@@ -2432,6 +2434,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!212 &1221227933
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221227930}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1297709183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,7 +2866,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1437395746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2881,8 +2935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1437395748}
-  Ldamage: 0
-  Hdamage: 0
   movementcolliders:
   - {fileID: 430382157}
   - {fileID: 1428902528}
@@ -2902,6 +2954,8 @@ MonoBehaviour:
   isPlayerOne: 1
   vertical: 0
   horizontal: 0
+  Ldamage: 10
+  Hdamage: 20
   attack1: 0
   attack2: 0
   attack3: 0
@@ -2911,13 +2965,14 @@ MonoBehaviour:
   currentlyAttacking: 0
   dontMove: 0
   onGround: 0
-  lookRight: 0
+  lookLeft: 0
   leftDamageColliders:
   - {fileID: 1862138159}
   - {fileID: 45465327}
   rightDamageColliders:
   - {fileID: 1221227930}
   - {fileID: 1391910629}
+  opponent: {fileID: 470022481}
 --- !u!1 &1465332770
 GameObject:
   m_ObjectHideFlags: 0
