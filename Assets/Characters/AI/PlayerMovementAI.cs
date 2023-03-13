@@ -15,7 +15,7 @@ public class PlayerMovementAI : MonoBehaviour
 
 
     public float oppDistance;
-    public float attackDistance = 2.5f;
+    public float attackDistance = 3f;
     public bool moveAI = true;
     public static bool attackState = false;
 
@@ -62,27 +62,62 @@ public class PlayerMovementAI : MonoBehaviour
     {
         
         // rigid.velocity = new Vector2( walkspeed, rigid.velocity.y);
-
+        
+        // new movement script for the AI 
         if(oppDistance > attackDistance)
         {
-            animator.SetBool("Walking", true);
-            if(!states.lookLeft)
-                rigid.velocity = new Vector2( walkspeed, rigid.velocity.y);
-            else 
-                rigid.velocity = new Vector2(  -1 * walkspeed, rigid.velocity.y);
+            if(moveAI)
+            {
+                moveAI = true;
+                animator.SetBool("Walking", true);
+                if(!states.lookLeft)
+                    rigid.velocity = new Vector2( walkspeed, rigid.velocity.y);
+                else 
+                    rigid.velocity = new Vector2(  -walkspeed, rigid.velocity.y);
+            }
         }
         else
         {
-            animator.SetBool("Walking", false);
+            if(moveAI)
+            {
+                moveAI = true;
+                animator.SetBool("Walking", false);
+            }
         }
 
 
 
-
-        if (jumpPressed && isGrounded)
+// stop the AI from moveing if its this close 
+        if(oppDistance < attackDistance)
         {
-            Jump();
+            if(moveAI)
+            {
+                moveAI = false;
+                StartCoroutine(waitingToWalk());
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // if (jumpPressed && isGrounded)
+        // {
+        //     Jump();
+        // }
 
 
     }
@@ -125,5 +160,11 @@ public class PlayerMovementAI : MonoBehaviour
         {
             states.lookLeft = true;
         }
+    }
+
+    IEnumerator waitingToWalk()
+    {
+        yield return new WaitForSeconds(2f);
+        moveAI = true;
     }
 }
