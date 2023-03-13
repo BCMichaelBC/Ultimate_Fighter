@@ -12,14 +12,12 @@ public class PlayerMovementAI : MonoBehaviour
     [SerializeField] bool isGrounded = true;
     [SerializeField] Animator animator;
     [SerializeField] GameObject playerAI;
-    [SerializeField] CombatAI combat;
-
 
 
     public float oppDistance;
     public float attackDistance = 3f;
     public bool moveAI = true;
-    public bool attackState = false;
+    public static bool attackState = false;
 
 
     //[SerializeField] 
@@ -35,9 +33,6 @@ public class PlayerMovementAI : MonoBehaviour
         {
             rigid = GetComponent<Rigidbody2D>();
         }
-
-        if (combat == null)
-            combat = GetComponent<CombatAI>();
         
     }
 
@@ -75,7 +70,6 @@ public class PlayerMovementAI : MonoBehaviour
             {
                 moveAI = true;
                 animator.SetBool("Walking", true);
-                attackState = false;
                 if(!states.lookLeft)
                     rigid.velocity = new Vector2( walkspeed, rigid.velocity.y);
                 else 
@@ -99,7 +93,6 @@ public class PlayerMovementAI : MonoBehaviour
             if(moveAI)
             {
                 moveAI = false;
-                attackState = true;
                 StartCoroutine(waitingToWalk());
             }
         }
@@ -171,8 +164,6 @@ public class PlayerMovementAI : MonoBehaviour
 
     IEnumerator waitingToWalk()
     {
-
-        
         yield return new WaitForSeconds(2f);
         moveAI = true;
     }

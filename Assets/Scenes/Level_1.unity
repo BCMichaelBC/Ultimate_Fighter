@@ -4173,11 +4173,9 @@ MonoBehaviour:
   isGrounded: 1
   animator: {fileID: 1811735397}
   playerAI: {fileID: 1811735392}
-  combat: {fileID: 0}
   oppDistance: 0
   attackDistance: 3
   moveAI: 1
-  attackState: 0
 --- !u!114 &1811735402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4194,8 +4192,6 @@ MonoBehaviour:
   movementcolliders:
   - {fileID: 1595072108}
   - {fileID: 194600113}
-  attSTATE: {fileID: 1811735401}
-  numberAttack: 0
 --- !u!114 &1811735404
 MonoBehaviour:
   m_ObjectHideFlags: 0
