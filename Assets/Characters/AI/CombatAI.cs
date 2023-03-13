@@ -6,14 +6,19 @@ using UnityEngine;
 public class CombatAI : MonoBehaviour
 {
     public Animator animator;
+    
 
     public GameObject[] movementcolliders;
 
     StateManager states;
+    [SerializeField] PlayerMovementAI attSTATE;
+    [SerializeField] int numberAttack = 0;
     // Start is called before the first frame update
     void Start()
     {
         states = GetComponent<StateManager>();
+
+        attSTATE = GetComponent<PlayerMovementAI>();
         
     }
 
@@ -51,13 +56,13 @@ public class CombatAI : MonoBehaviour
             animator.SetBool("Crouching", false);
             movementcolliders[0].SetActive(true);
         }
-        if ((Input.GetKey(KeyCode.F) && states.isPlayerOne) || (Input.GetKey(KeyCode.J) && !states.isPlayerOne)) // punch
+        if (numberAttack == 1) //  For the AI to punch
         {
             animator.SetBool("HPunch", true);
             //Debug.Log("You Punched");
             states.SelectCombatCollider(0, 10);
         }
-        if ((Input.GetKey(KeyCode.G) && states.isPlayerOne) || (Input.GetKey(KeyCode.K) && !states.isPlayerOne)) // kick
+        if (numberAttack == 2) // kick
         {
             animator.SetBool("LPunch", true);
            // Debug.Log("You Kicked");
@@ -88,5 +93,14 @@ public class CombatAI : MonoBehaviour
         animator.SetBool("HPunch", false);
         animator.SetBool("LKick", false);
         animator.SetBool("HKick", false);
+    }
+
+    public void randomATT()
+    {
+        if(attSTATE.attackState)
+        {
+            numberAttack = Random.Range(1,3); // number 1 - 2 just punch and kick for now mayber more later
+        }
+
     }
 }
