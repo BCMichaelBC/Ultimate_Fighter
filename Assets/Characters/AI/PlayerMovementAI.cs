@@ -71,11 +71,12 @@ public class PlayerMovementAI : MonoBehaviour
         // new movement script for the AI 
         if(oppDistance > attackDistance)
         {
-            if(moveAI)
+            if(moveAI) // far from opponet and needs to walk there 
             {
                 moveAI = true;
                 animator.SetBool("Walking", true);
                 attackState = false;
+                animator.SetBool("CanAttack", false);
                 if(!states.lookLeft)
                     rigid.velocity = new Vector2( walkspeed, rigid.velocity.y);
                 else 
@@ -84,9 +85,11 @@ public class PlayerMovementAI : MonoBehaviour
         }
         else
         {
-            if(moveAI)
+            if(moveAI) // far from opponent but can just stand there
             {
                 moveAI = true;
+                animator.SetBool("CanAttack", false);
+                // combat.resetNumberAttack();
                 animator.SetBool("Walking", false);
             }
         }
@@ -94,7 +97,7 @@ public class PlayerMovementAI : MonoBehaviour
 
 
 // stop the AI from moveing if its this close 
-        if(oppDistance < attackDistance)
+        if(oppDistance < attackDistance) // close to opponent 
         {
             if(moveAI)
             {
@@ -102,7 +105,23 @@ public class PlayerMovementAI : MonoBehaviour
                 attackState = true;
                 StartCoroutine(waitingToWalk());
             }
+
+
+            if(attackState)
+            {
+                animator.SetBool("CanAttack", true);
+                StartCoroutine(waitToAtt());
+                combat.resetNumberAttack();
+                StartCoroutine(AfterAttack());
+            }
+            else
+            {
+                combat.resetNumberAttack();
+            }
+            
         }
+
+
 
 
 
@@ -175,5 +194,24 @@ public class PlayerMovementAI : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
         moveAI = true;
+       
+    }
+
+    IEnumerator waitToAtt()
+    {
+        
+        yield return new WaitForSeconds(5f);
+        combat.randomATT();
+
+        
+
+    }
+
+    IEnumerator AfterAttack()
+    {
+
+        combat.resetNumberAttack();
+        yield return new WaitForSeconds(3f);
+
     }
 }

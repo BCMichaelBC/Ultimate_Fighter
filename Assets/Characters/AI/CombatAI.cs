@@ -58,12 +58,15 @@ public class CombatAI : MonoBehaviour
         }
         if (numberAttack == 1) //  For the AI to punch
         {
+            StartCoroutine(waitAfterAttack());
             animator.SetBool("HPunch", true);
             //Debug.Log("You Punched");
             states.SelectCombatCollider(0, 10);
+            
         }
         if (numberAttack == 2) // kick
         {
+            StartCoroutine(waitAfterAttack());
             animator.SetBool("LPunch", true);
            // Debug.Log("You Kicked");
             states.SelectCombatCollider(0, 10);
@@ -97,10 +100,20 @@ public class CombatAI : MonoBehaviour
 
     public void randomATT()
     {
-        if(attSTATE.attackState)
-        {
-            numberAttack = Random.Range(1,3); // number 1 - 2 just punch and kick for now mayber more later
-        }
+       //starting from -1 to add some more space inbetween attacks
+        numberAttack = Random.Range(-1,3); // number 1 - 2 just punch and kick for now mayber more later
+        
+        
 
+    }
+
+
+    IEnumerator waitAfterAttack()
+    {
+        yield return new WaitForSeconds(4f);
+    }
+    public void resetNumberAttack()
+    {
+        numberAttack = 0;
     }
 }
