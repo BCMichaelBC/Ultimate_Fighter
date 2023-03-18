@@ -987,6 +987,7 @@ GameObject:
   - component: {fileID: 470022492}
   - component: {fileID: 470022491}
   - component: {fileID: 470022494}
+  - component: {fileID: 470022496}
   m_Layer: 6
   m_Name: player2
   m_TagString: Untagged
@@ -1190,6 +1191,19 @@ MonoBehaviour:
   maxHp: 100
   hpBar: {fileID: 1027122192}
   animator: {fileID: 470022486}
+--- !u!114 &470022496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470022481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d279e5593b2254496e13e7d9dbad2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 519420031}
 --- !u!1 &477365326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,7 +1978,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891668744
 GameObject:
@@ -2854,6 +2868,7 @@ GameObject:
   - component: {fileID: 1437395747}
   - component: {fileID: 1437395749}
   - component: {fileID: 1437395750}
+  - component: {fileID: 1437395751}
   m_Layer: 6
   m_Name: player 1
   m_TagString: Untagged
@@ -3057,6 +3072,19 @@ MonoBehaviour:
   - {fileID: 1221227930}
   - {fileID: 1391910629}
   opponent: {fileID: 470022481}
+--- !u!114 &1437395751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437395741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d279e5593b2254496e13e7d9dbad2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 519420031}
 --- !u!1 &1465332770
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,7 +3883,7 @@ GameObject:
   - component: {fileID: 2083711935}
   m_Layer: 6
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
