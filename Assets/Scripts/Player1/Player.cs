@@ -21,21 +21,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TakeDamage();
+        if (Input.GetKeyDown(KeyCode.M)) //for testing damage values
+        {
+            //TakeDamage();
+        }
+        
     }
 
-    //Damage is either a random number or 1/4 of players current health
-    //Change it to be based on attacks
     public void TakeDamage()
     {
-        states.health -= states.opponent.GetComponent<StateManager>().Ldamage;
-        hpBar.UpdateHpBar();
-    }
-
-    public void onTriggerEnter(Collider other)
-    {
-        //play animation here and try to have the player take damage 
+        Debug.Log("Damaged");
         animator.SetTrigger("Hit");
-        TakeDamage();
+        states.health -= states.opponent.GetComponent<StateManager>().Ldamage;
+        Hp = states.health;
+        hpBar.UpdateHpBar();
     }
 }

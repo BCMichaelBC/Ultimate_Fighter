@@ -55,13 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    //for the reactions 
-    public void onTriggerEnter(Collider other)
-    {
-        //play animation here and try to have the player take damage 
-        animator.SetTrigger("Hit");
-    }
-
     public void Jump()
     {
         rigid.velocity = new Vector2(rigid.velocity.x, 0);
@@ -69,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         rigid.AddForce(new Vector2(0, jumpForce));
         isGrounded = false; // not on ground any more 
         states.onGround = false;
+        //states.movementcolliders[1].SetActive(false);
         animator.SetBool("Jumping", true);
         jumpPressed = false; // to avoid double jump
     }
@@ -79,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true; // youve hit the ground again
             states.onGround = true;
+            states.movementcolliders[1].SetActive(true);
             animator.SetBool("Jumping", false);
         }
     }

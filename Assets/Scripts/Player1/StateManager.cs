@@ -24,6 +24,7 @@ public class StateManager : MonoBehaviour
     public bool onGround;
     public bool lookLeft;
 
+    public GameObject[] movementcolliders;
     public GameObject[] leftDamageColliders;
     public GameObject[] rightDamageColliders;
     public GameObject opponent;
@@ -74,9 +75,9 @@ public class StateManager : MonoBehaviour
     }
 
 
-    IEnumerator OpenColliders(GameObject[] collider, int index, float delay) //open specific collider
+    void OpenColliders(GameObject[] collider, int index, float delay) //open specific collider
     {
-        yield return new WaitForSeconds(delay);
+        //yield return new WaitForSeconds(delay);
         collider[index].SetActive(true);
     }
     public void CloseColliders(GameObject[] colliders) // close specific colliders
@@ -86,4 +87,5 @@ public class StateManager : MonoBehaviour
             colliders[i].SetActive(false);
         }
     }
+
 }
