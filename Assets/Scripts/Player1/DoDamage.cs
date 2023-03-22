@@ -11,21 +11,26 @@ public class DoDamage : MonoBehaviour
     void Start()
     {
         states = GetComponentInParent<StateManager>();
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) //for testing damage values
+        if (Input.GetKey(KeyCode.M)) //for testing damage values
             {
                 Debug.Log("Attack");
                 states.opponent.GetComponent<Player>().TakeDamage();
             }
     }
 
-    public void onTriggerEnter2D(Collider other)
+
+    // fixed the script by looking up the unity API on 2d colliders.  https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerEnter2D.html
+    public void OnTriggerEnter2D(Collider2D collider)
     {
+
+        Debug.Log(collider.name); // testing testing
         //play animation here and try to have the player take damage
         Debug.Log("Triggered");
         states.opponent.GetComponent<Player>().TakeDamage();
