@@ -12,8 +12,9 @@ public class Winner : MonoBehaviour
     public GameObject playerOne;
     public GameObject playerTwo;
 
+    StateManager playerState;
+
     public GameObject playerOneWinRoundOne, playerOneLoseRoundOne, playerOneWinRoundTwo, playerOneLoseRoundTwo;
-    public Image playerOneRoundOne, playerOneRoundTwo, playerTwoRoundOne, playerTwoRoundTwo, playerOneRoundThree, playerTwoRoundThree;
     public GameObject playerTwoWinRoundOne, playerTwoLoseRoundOne, playerTwoWinRoundTwo, playerTwoLoseRoundTwo;
     public bool isRoundTwo, gameComplete;
     public bool roundOnePlayerOneWin;
@@ -27,19 +28,33 @@ public class Winner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameTimer = GetComponent<Timer>();
-        
+        playerState = GetComponent<StateManager>();
     }
 
-    void nextRound()
+    public void nextRound()
     {
         playerOne.transform.position = new Vector3(-6f, -1f, 0f);
         playerTwo.transform.position = new Vector3(6f, -1f, 0f);
         gameTimer.LevelTime = 90;
         TimerText.text = Mathf.Round(gameTimer.LevelTime).ToString();
 
-       // if(gameComplete)
-       // {
+        if(playerOneWins == 1)
+        {
+            playerOneWinRoundOne.SetActive(true);
+        }
+        if(playerOneWins == 2)
+        {
+            playerOneWinRoundTwo.SetActive(true);
+        }
+        if(playerTwoWins == 1)
+        {
+            playerTwoWinRoundOne.SetActive(true);
+        }
+        if(playerTwoWins == 2)
+        {
+            playerTwoWinRoundTwo.SetActive(true);
+        }
+
             if(playerOneWins >= 2)
             {
                 print("Player One Wins");
@@ -54,22 +69,14 @@ public class Winner : MonoBehaviour
             {
                 print("Round 3");
             }
-       // }
     }
 
-    void ResetGame()
+    public void ResetGame()
     {
         playerOne.transform.position = new Vector3(-6f, -1f, 0f);
         playerTwo.transform.position = new Vector3(6f, -1f, 0f);
 
         Time.timeScale = 0;
-       // playerOneRoundOne.color = new Color(0f, 0f, 1f, 0f);
-        //playerTwoRoundOne.color = new Color(0f, 0f, 1f, 0f);
-        //playerOneRoundTwo.color = new Color(0f, 0f, 1f, 0f);
-       // playerTwoRoundTwo.color = new Color(0f, 0f, 1f, 0f);
-       // playerOneRoundThree.color = new Color(0f, 0f, 1f, 0f);
-       // playerTwoRoundThree.color = new Color(0f, 0f, 1f, 0f);
-     
     }
 
     // Update is called once per frame
@@ -79,8 +86,9 @@ public class Winner : MonoBehaviour
         {
             if (roundNumber == 1)
             {
-                playerOneRoundOne.color = new Color(0f, 1f, 0f, 1f);
-                playerTwoRoundOne.color = new Color(1f, 0f, 0f, 1f);
+               if(playerState.isPlayerOne)
+               {
+                   playerOneWinRoundOne.SetActive(true);
 
                 playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerTwo.transform.position = new Vector3(6f, -1f, 0f);
@@ -88,36 +96,23 @@ public class Winner : MonoBehaviour
                 gameTimer.LevelTime = 90;
                 TimerText.text = Mathf.Round(gameTimer.LevelTime).ToString();
 
-               // playerOneRoundOne.color = new Color(0f, 1f, 0f, 0f);
-              //  playerOneRoundOne.color = new Color(0f, 1f, 0f, 0f);
-               // playerOneRoundOne.SetActive(true);
-                //playerTwoLoseRoundOne.SetActive(true);
                 playerOneWins++;
                 roundNumber++;
+               }
             }
             else if (roundNumber == 2)
             {
-                playerOneRoundTwo.color = new Color(0f, 1f, 0f, 1f);
-                playerTwoRoundTwo.color = new Color(1f, 0f, 0f, 1f);
-               // playerOneRoundTwo.SetActive(true);
-                //playerOneLoseRoundTwo.SetActive(true);
                 playerOneWins++;
                 roundNumber++;
 
                 nextRound();
-               // ResetGame();
             }
             else if (roundNumber == 3)
             {
-                playerOneRoundThree.color = new Color(0f, 1f, 0f, 1f);
-                playerTwoRoundThree.color = new Color(1f, 0f, 0f, 1f);
-                //playerOneRoundThree.color = new Color(0f, 1f, 0f, 1f);
-                //playerOneWinRoundTwo.SetActive(true);
                 playerOneWins++;
                 roundNumber++;
 
                 nextRound();
-               // ResetGame();
             }
         }
 
@@ -125,14 +120,11 @@ public class Winner : MonoBehaviour
         {
             if (roundNumber == 1)
             {
-                playerOneRoundOne.color = new Color(1f, 0f, 0f, 1f);
-                playerTwoRoundOne.color = new Color(0f, 1f, 0f, 1f);
+
+              playerTwoWinRoundOne.SetActive(true);
 
                 playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerTwo.transform.position = new Vector3(6f, -1f, 0f);
-
-               // playerTwoWinRoundOne.SetActive(true);
-               // playerOneLoseRoundOne.SetActive(true);
 
                 gameTimer.LevelTime = 90;
                 TimerText.text = Mathf.Round(gameTimer.LevelTime).ToString();
@@ -142,10 +134,7 @@ public class Winner : MonoBehaviour
             }
             else if (roundNumber == 2)
             {
-                playerOneRoundTwo.color = new Color(1f, 0f, 0f, 1f);
-                playerTwoRoundTwo.color = new Color(0f, 1f, 0f, 1f);
-               // playerTwoWinRoundTwo.SetActive(true);
-                //playerOneLoseRoundTwo.SetActive(true);
+    
                 playerTwoWins++;
                 roundNumber++;
 
@@ -154,14 +143,11 @@ public class Winner : MonoBehaviour
             }
             else if (roundNumber == 3)
             {
-                playerOneRoundThree.color = new Color(1f, 0f, 0f, 1f);
-                playerTwoRoundThree.color = new Color(0f, 1f, 0f, 1f);
-                //playerOneWinRoundTwo.SetActive(true);
+
                 playerTwoWins++;
                 roundNumber++;
 
                 nextRound();
-               
             }
 
         }
