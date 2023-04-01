@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a167994755948415b8360ab612e4fe92
+guid: 8ed038e1746176f448f05e06dfdc979c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,43 +117,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Crouch-removebg-preview_0
+      name: Crouch_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 27
-        width: 135
-        height: 200
+        x: 0
+        y: 5
+        width: 54
+        height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5850140eb5d7c40e8971fce0bf59729d
-      internalID: -674017351
+      spriteID: 94f6bfbd0689b78499fea86878285a08
+      internalID: -1553195729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crouch-removebg-preview_1
+      name: Crouch_1
       rect:
         serializedVersion: 2
-        x: 187
-        y: 25
-        width: 131
-        height: 183
+        x: 53
+        y: 5
+        width: 54
+        height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cbdfb42bd2b44e8b8f54275ef981cdb
-      internalID: 1127264571
+      spriteID: 46d93ce67f9416647a69eea90edb5703
+      internalID: -1202420032
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Crouch-removebg-preview_1: 1127264571
-      Crouch-removebg-preview_0: -674017351
+      Crouch_0: -1553195729
+      Crouch_1: -1202420032
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
