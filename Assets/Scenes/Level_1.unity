@@ -3701,7 +3701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 1297709185}
-  player: {fileID: 470022495}
+  player: {fileID: 482094301}
 --- !u!1 &1036172469
 GameObject:
   m_ObjectHideFlags: 0
