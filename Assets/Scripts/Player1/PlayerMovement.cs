@@ -78,6 +78,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void onTriggerEnter(Collider other)
+    {
+        //play animation here and try to have the player take damage 
+        animator.SetTrigger("Hit");
+    }
+
     public void faceOpponent()
     {
         if (transform.position.x - states.opponent.transform.position.x < 0)

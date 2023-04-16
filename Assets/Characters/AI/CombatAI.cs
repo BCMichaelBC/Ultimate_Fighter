@@ -63,18 +63,18 @@ public class CombatAI : MonoBehaviour
             }
             if (numberAttack == 1) //  For the AI to punch
             {
-                StartCoroutine(waitAfterAttack());
-                animator.SetBool("HPunch", true);
-                //Debug.Log("You Punched");
                 states.SelectCombatCollider(0, 10);
+                animator.SetBool("HPunch", true);
+                StartCoroutine(waitAfterAttack());
+                //Debug.Log("You Punched");
                 
             }
             if (numberAttack == 2) // kick
             {
-                StartCoroutine(waitAfterAttack());
-                animator.SetBool("LPunch", true);
-            // Debug.Log("You Kicked");
                 states.SelectCombatCollider(0, 10);
+                animator.SetBool("LPunch", true);
+                StartCoroutine(waitAfterAttack());
+                //Debug.Log("You Kicked");
             }
 
             if ((Input.GetKey(KeyCode.F) && states.isPlayerOne && !states.onGround) || (Input.GetKey(KeyCode.J) && !states.isPlayerOne && !states.onGround)) // jump punch
@@ -90,8 +90,6 @@ public class CombatAI : MonoBehaviour
                 states.SelectCombatCollider(1, 10);
             }
         }
-        states.CloseColliders(states.leftDamageColliders);
-        states.CloseColliders(states.rightDamageColliders);
     }
 
     public void resetAnimators()
@@ -102,6 +100,9 @@ public class CombatAI : MonoBehaviour
         animator.SetBool("HPunch", false);
         animator.SetBool("LKick", false);
         animator.SetBool("HKick", false);
+
+        states.CloseColliders(states.leftDamageColliders);
+        states.CloseColliders(states.rightDamageColliders);
     }
 
     public void randomATT()

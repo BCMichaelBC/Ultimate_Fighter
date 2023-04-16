@@ -79,6 +79,7 @@ public class StateManager : MonoBehaviour
     {
         //yield return new WaitForSeconds(delay);
         collider[index].SetActive(true);
+        Debug.Log(collider[index]);
     }
     public void CloseColliders(GameObject[] colliders) // close specific colliders
     {
