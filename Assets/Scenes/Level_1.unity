@@ -1393,7 +1393,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a5a945024ecac6449b5060fa49b3c4b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 02c4247a7ae9c58408163962a8ca3518, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.35
   m_Pitch: 1
@@ -1981,6 +1981,7 @@ GameObject:
   - component: {fileID: 482094291}
   - component: {fileID: 482094290}
   - component: {fileID: 482094301}
+  - component: {fileID: 482094302}
   m_Layer: 6
   m_Name: RyuAI
   m_TagString: Untagged
@@ -2210,6 +2211,19 @@ MonoBehaviour:
   hpBar: {fileID: 1027122192}
   animator: {fileID: 482094297}
   playerUI: {fileID: 1098424433}
+--- !u!114 &482094302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482094289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567ff7245c5d189448f0569f8af7816f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 3.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5015,6 +5029,7 @@ GameObject:
   - component: {fileID: 1437395749}
   - component: {fileID: 1437395750}
   - component: {fileID: 1437395751}
+  - component: {fileID: 1437395752}
   m_Layer: 6
   m_Name: player 1
   m_TagString: Untagged
@@ -5232,6 +5247,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 519420031}
+--- !u!114 &1437395752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437395741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567ff7245c5d189448f0569f8af7816f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 4
 --- !u!1 &1465332770
 GameObject:
   m_ObjectHideFlags: 0
