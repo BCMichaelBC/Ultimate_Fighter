@@ -1674,17 +1674,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - name: RYU
+    player1prefab: {fileID: 8011832395736536546, guid: dfe388d521934ee4191c7a709a41ed51, type: 3}
+    player2prefab: {fileID: 12995521206550859, guid: 4f5c8a40933a09641be983bddef309b2, type: 3}
     icon: {fileID: 55821053, guid: d4888cc0ffc6da4459902f054e01407a, type: 3}
   - name: CHUN-LI
+    player1prefab: {fileID: 1341483751425658392, guid: e967c514fc4909e428e21d9bd0672a7c, type: 3}
+    player2prefab: {fileID: 2246049080387603084, guid: 0cb481e8d05184448a0ad4e2844959f4, type: 3}
     icon: {fileID: 184396501, guid: b2c0fd025487ea146867eaec37fde8ad, type: 3}
   - name: KEN
+    player1prefab: {fileID: 6311782272655180234, guid: e9969455a69c4ff4ea40bdff0b1ed167, type: 3}
+    player2prefab: {fileID: 2181601845465745439, guid: 111804ce1035229439832f995a49924b, type: 3}
     icon: {fileID: -259071957, guid: 36def8c109345174cba32ebc7c221306, type: 3}
   currentCharacterPlayer1:
     name: 
+    player1prefab: {fileID: 0}
+    player2prefab: {fileID: 0}
     icon: {fileID: 0}
   currentCharacterPlayer2:
     name: 
+    player1prefab: {fileID: 0}
+    player2prefab: {fileID: 0}
     icon: {fileID: 0}
+  p1: {fileID: 0}
+  p2: {fileID: 0}
 --- !u!4 &2012731363
 Transform:
   m_ObjectHideFlags: 0

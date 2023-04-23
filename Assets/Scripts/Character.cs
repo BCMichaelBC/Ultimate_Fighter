@@ -6,5 +6,7 @@ using UnityEngine;
 public class Character
 {
     public string name;
+    public GameObject player1prefab;
+    public GameObject player2prefab;
     public Sprite icon;
 }

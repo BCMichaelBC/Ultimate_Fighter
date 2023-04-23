@@ -9,13 +9,22 @@ public class GameManager : MonoBehaviour
 
     public Character currentCharacterPlayer1;
     public Character currentCharacterPlayer2;
-
+    public GameObject p1;
+    public GameObject p2;
     private bool isPlayer1Locked = false;
     private bool isPlayer2Locked = false;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -31,7 +40,8 @@ public class GameManager : MonoBehaviour
     {
         if (!isPlayer1Locked)
         {
-            currentCharacterPlayer1 = character;       
+            currentCharacterPlayer1 = character;
+            p1 = character.player1prefab;
         }
     }
 
@@ -40,6 +50,7 @@ public class GameManager : MonoBehaviour
         if (!isPlayer2Locked)
         {
             currentCharacterPlayer2 = character;
+            p2 = character.player2prefab;
         }
     }
 
