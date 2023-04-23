@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectionScreen.unity
     guid: 13f30a070d160b147b5111b775390afa
+  - enabled: 1
+    path: Assets/Scenes/MapSelection.unity
+    guid: b2b42c93712816f4db40fe3e7dcb3bad
   m_configObjects: {}
