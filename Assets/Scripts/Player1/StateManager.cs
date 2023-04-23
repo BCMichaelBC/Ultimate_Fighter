@@ -21,6 +21,8 @@ public class StateManager : MonoBehaviour
     public bool currentlyAttacking;
 
     public bool dontMove;
+    public bool block;
+    public bool blockedDamage;
     public bool onGround;
     public bool lookLeft;
 
@@ -53,6 +55,8 @@ public class StateManager : MonoBehaviour
         gettingHit = false;
         currentlyAttacking = false;
         dontMove = false;
+        block = false;
+        blockedDamage = false;
         isPlayerOne = true;
 
     }
@@ -79,7 +83,7 @@ public class StateManager : MonoBehaviour
     {
         //yield return new WaitForSeconds(delay);
         collider[index].SetActive(true);
-        Debug.Log(collider[index]);
+        //Debug.Log(collider[index]);
     }
     public void CloseColliders(GameObject[] colliders) // close specific colliders
     {
@@ -87,5 +91,15 @@ public class StateManager : MonoBehaviour
         {
             colliders[i].SetActive(false);
         }
+    }
+
+    public void StopMovement()
+    {
+        dontMove = true;
+    }
+
+    public void StartMovement()
+    {
+        dontMove = false;
     }
 }

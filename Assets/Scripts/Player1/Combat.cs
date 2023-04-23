@@ -21,10 +21,19 @@ public class Combat : MonoBehaviour
         if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.L) && !states.isPlayerOne)) // To block
         {
             animator.SetBool("Blocking", true);
+            states.block = true;
+            states.dontMove = true;
+            if (states.blockedDamage)
+            {
+                Debug.Log(":D");
+                animator.SetTrigger("NoDamage");
+                states.blockedDamage = false;
+            }
         }
         else
         {
             animator.SetBool("Blocking", false);
+            states.block = false;
         }
         
         if ((Input.GetKey(KeyCode.S) && states.isPlayerOne) || (Input.GetKey(KeyCode.DownArrow) && !states.isPlayerOne)) // To crouch

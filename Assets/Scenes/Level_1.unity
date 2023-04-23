@@ -1604,7 +1604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &470022486
 Animator:
   serializedVersion: 5
@@ -1773,6 +1773,8 @@ MonoBehaviour:
   gettingHit: 0
   currentlyAttacking: 0
   dontMove: 0
+  block: 0
+  blockedDamage: 0
   onGround: 0
   lookLeft: 1
   movementcolliders:
@@ -1973,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &482094290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,6 +2059,8 @@ MonoBehaviour:
   gettingHit: 0
   currentlyAttacking: 0
   dontMove: 0
+  block: 0
+  blockedDamage: 0
   onGround: 0
   lookLeft: 1
   movementcolliders:
@@ -3275,6 +3279,8 @@ MonoBehaviour:
   gettingHit: 0
   currentlyAttacking: 0
   dontMove: 0
+  block: 0
+  blockedDamage: 0
   onGround: 0
   lookLeft: 0
   movementcolliders:
@@ -5044,6 +5050,8 @@ MonoBehaviour:
   gettingHit: 0
   currentlyAttacking: 0
   dontMove: 0
+  block: 0
+  blockedDamage: 0
   onGround: 0
   lookLeft: 0
   movementcolliders:
@@ -5055,7 +5063,7 @@ MonoBehaviour:
   rightDamageColliders:
   - {fileID: 1221227930}
   - {fileID: 1391910629}
-  opponent: {fileID: 482094289}
+  opponent: {fileID: 470022481}
 --- !u!114 &1437395751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6601,6 +6609,8 @@ MonoBehaviour:
   gettingHit: 0
   currentlyAttacking: 0
   dontMove: 0
+  block: 0
+  blockedDamage: 0
   onGround: 0
   lookLeft: 0
   movementcolliders:
