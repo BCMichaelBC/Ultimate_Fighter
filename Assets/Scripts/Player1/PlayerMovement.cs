@@ -32,7 +32,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Getting the x values of movement from the player so if the player wants to move left or right
-        movement = Input.GetAxis("Horizontal");
+        if (!states.dontMove)
+        {
+            movement = Input.GetAxis("Horizontal");
+        }
 
         //Check if the player is moving, and changes the animation accordingly 
         animator.SetFloat("Speed", Mathf.Abs(movement));
@@ -47,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         rigid.velocity = new Vector2(movement * walkspeed, rigid.velocity.y);
-        if (jumpPressed && isGrounded)
+        if (jumpPressed && isGrounded && !states.dontMove)
         {
             Jump();
         }
@@ -76,12 +79,6 @@ public class PlayerMovement : MonoBehaviour
             states.movementcolliders[1].SetActive(true);
             animator.SetBool("Jumping", false);
         }
-    }
-
-    public void onTriggerEnter(Collider other)
-    {
-        //play animation here and try to have the player take damage 
-        animator.SetTrigger("Hit");
     }
 
     public void faceOpponent()

@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("Damaged");
+        //Debug.Log("Damaged");
         animator.SetTrigger("Hit");
         states.health -= states.opponent.GetComponent<StateManager>().Ldamage;
 

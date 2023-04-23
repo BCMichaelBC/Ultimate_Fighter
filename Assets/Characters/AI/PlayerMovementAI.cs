@@ -148,12 +148,6 @@ public class PlayerMovementAI : MonoBehaviour
 
     }
 
-    //for the reactions 
-    public void onTriggerEnter(Collider other)
-    {
-        //play animation here and try to have the player take damage 
-        animator.SetTrigger("Hit");
-    }
 
     public void Jump()
     {

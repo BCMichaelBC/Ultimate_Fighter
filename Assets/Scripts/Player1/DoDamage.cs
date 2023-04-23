@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class DoDamage : MonoBehaviour
 {
-
     StateManager states;
 
     // Start is called before the first frame update
     void Start()
     {
         states = GetComponentInParent<StateManager>();
-        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.M)) //for testing damage values
-            {
-                Debug.Log("Attack");
-                states.opponent.GetComponent<Player>().TakeDamage();
-            }
+
     }
 
 
@@ -30,10 +24,16 @@ public class DoDamage : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider)
     {
 
-        Debug.Log(collider.name); // testing testing
+        //Debug.Log(collider.name); // testing testing
         //play animation here and try to have the player take damage
-        Debug.Log("Triggered");
-        states.opponent.GetComponent<Player>().TakeDamage();
-    
+        //Debug.Log("Triggered");
+        if (!states.opponent.GetComponent<StateManager>().block)
+        {
+            states.opponent.GetComponent<Player>().TakeDamage();
+        }
+        else
+        {
+            states.opponent.GetComponent<StateManager>().blockedDamage = true;            
+        }
     }
 }
