@@ -13,8 +13,6 @@ public class Timer : MonoBehaviour
     public bool didstart = false;
     public Player playerOne;
     public Player playerTwo;
-    public PlayerMovement p1m;
-    public PlayerMovement2 p2m;
     public Winner levelManager;
     public HealthBar playerOneHealth;
     public HealthBar playerTwoHealth;
