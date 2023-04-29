@@ -115,7 +115,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Victory 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8630df99a6401144bb93f3c9a2b0b8c7
+      internalID: -154755673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory 2_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daee929ecfeb3c14aa3c63fe45e25935
+      internalID: 2059725451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory 2_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6657b2b1d713f2a4792d64a79e803b3a
+      internalID: 1266359625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory 2_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29502b92b542a0f43a4a9ce68b1489a8
+      internalID: 291236478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory 2_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c10b419a56d708488d9e29f57bda468
+      internalID: -850258136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory 2_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72de42e52f72b2548a941719ba389df7
+      internalID: -214715886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory 2_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48.142857
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa04662f7d7b324c978cadcdcef8ead
+      internalID: -1454262730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +273,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Victory 2_6: -1454262730
+      Victory 2_2: 1266359625
+      Victory 2_5: -214715886
+      Victory 2_3: 291236478
+      Victory 2_1: 2059725451
+      Victory 2_4: -850258136
+      Victory 2_0: -154755673
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

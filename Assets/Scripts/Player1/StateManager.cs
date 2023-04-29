@@ -47,6 +47,7 @@ public class StateManager : MonoBehaviour
 
     void ResetState() //reset all states
     {
+        GetComponent<Animator>().enabled = true;
         horizontal = 0;
         vertical = 0;
         attack1 = false;
@@ -101,5 +102,10 @@ public class StateManager : MonoBehaviour
     public void StartMovement()
     {
         dontMove = false;
+    }
+
+    public void StopAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
     }
 }

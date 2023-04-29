@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2246049080223650175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0022573355, y: -0.060948122, z: 0}
-  m_LocalScale: {x: 0.17784886, y: 0.17106837, z: 0.17784886}
+  m_LocalPosition: {x: 0.0022573355, y: -0.112, z: 0}
+  m_LocalScale: {x: 0.17784886, y: 0.15609989, z: 0.17784886}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2246049080326554261}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 8806187800050234880}
   m_Layer: 6
   m_Name: Chun Li Player 2
-  m_TagString: Untagged
+  m_TagString: Player 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1126962821
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1586502746, guid: d7accd460b5864dc9b4addceffa36b0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -422,8 +422,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2246049080530225192}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0022573355, y: -0.060948122, z: 0}
-  m_LocalScale: {x: 1.0864252, y: 1.0450054, z: 1.0864252}
+  m_LocalPosition: {x: 0.0022573355, y: -0.11199999, z: 0}
+  m_LocalScale: {x: 1.0864252, y: 0.9535675, z: 1.0864252}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2246049081538421768}

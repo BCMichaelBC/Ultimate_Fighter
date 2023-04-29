@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7570343286898307482}
   m_Layer: 6
   m_Name: RyuAI
-  m_TagString: Untagged
+  m_TagString: Player 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
