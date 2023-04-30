@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8011832395736536535}
   m_Layer: 6
   m_Name: Ryu Player 1
-  m_TagString: Untagged
+  m_TagString: Player 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

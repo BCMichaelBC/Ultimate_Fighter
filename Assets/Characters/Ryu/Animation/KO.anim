@@ -25,6 +25,10 @@ AnimationClip:
       value: {fileID: 1800966885, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
     - time: 0.33333334
       value: {fileID: 1144407100, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
+    - time: 0.5
+      value: {fileID: 1792854564, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
+    - time: 0.6666667
+      value: {fileID: -142365611, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -47,17 +51,19 @@ AnimationClip:
     - {fileID: -2006867550, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
     - {fileID: 1800966885, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
     - {fileID: 1144407100, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
+    - {fileID: 1792854564, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
+    - {fileID: -142365611, guid: ea3957dc3db8ba24781567eb9f7e0d8d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.8333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -71,4 +77,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: StopAnimator
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

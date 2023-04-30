@@ -16,7 +16,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         states = GetComponent<StateManager>();
-
+        if (gameObject.tag == "Player 1")
+        {
+            states.opponent = GameObject.FindWithTag("Player 2");
+            hpBar = GameObject.FindWithTag("Health 1").GetComponent<HealthBar>();
+        }
+        else
+        {
+            states.opponent = GameObject.FindWithTag("Player 1");
+            hpBar = GameObject.FindWithTag("Health 2").GetComponent<HealthBar>();
+        }
     }
 
     // Update is called once per frame
@@ -43,7 +52,6 @@ public class Player : MonoBehaviour
             }
     }
 
-
     public void TakeDamage()
     {
         //Debug.Log("Damaged");
@@ -51,8 +59,7 @@ public class Player : MonoBehaviour
         states.health -= states.opponent.GetComponent<StateManager>().Ldamage;
 
         Hp = states.health;
-
-
+        animator.SetFloat("HP", Hp);
         hpBar.UpdateHpBar();
 
 
@@ -61,7 +68,7 @@ public class Player : MonoBehaviour
 
             if(Hp <= 0)
             {
-
+                states.opponent.GetComponent<Player>().animator.SetTrigger("Win");
                 if (playerUI.roundNumber == 1)
             {
                
@@ -129,9 +136,10 @@ public class Player : MonoBehaviour
         {
             if(Hp <= 0)
             {
+                Debug.Log("Player 2 Win");
+                states.opponent.GetComponent<Player>().animator.SetTrigger("Win");
                 if (playerUI.roundNumber == 1)
             {
-               
                if(states.isPlayerOne == false)
                {
                    playerUI.playerOneWinRoundOne.SetActive(true);
@@ -151,8 +159,8 @@ public class Player : MonoBehaviour
                }
             }
             else if (playerUI.roundNumber == 2)
-            {  
-               if(states.isPlayerOne == false) 
+            {
+               if (states.isPlayerOne == false) 
                {
                    playerUI.playerOneWinRoundTwo.SetActive(true);
 
@@ -188,8 +196,8 @@ public class Player : MonoBehaviour
                 playerUI.roundNumber++;
 
                 print("Player One Wins Game");
-               
-            }
+                
+                }
             }
         }
             CheckWinner();
