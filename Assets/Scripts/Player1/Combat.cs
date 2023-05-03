@@ -62,16 +62,16 @@ public class Combat : MonoBehaviour
         }
         if (states.onGround && !states.crouch)
         {
-            if ((Input.GetKeyDown(KeyCode.F) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.J) && !states.isPlayerOne)) // punch
+            if ((Input.GetKeyDown(KeyCode.F) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.J) && !states.isPlayerOne)) // heavy punch
             {
                 animator.SetBool("HPunch", true);
-                //Debug.Log("You Punched");
+                //Debug.Log("You Heavy Punched");
                 states.SelectCombatCollider(0, 10);
             }
-            if ((Input.GetKeyDown(KeyCode.G) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.K) && !states.isPlayerOne)) // kick
+            if ((Input.GetKeyDown(KeyCode.G) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.K) && !states.isPlayerOne)) // light punch
             {
                 animator.SetBool("LPunch", true);
-                // Debug.Log("You Kicked");
+                //Debug.Log("You Light Punched");
                 states.SelectCombatCollider(0, 10);
             }
         }
