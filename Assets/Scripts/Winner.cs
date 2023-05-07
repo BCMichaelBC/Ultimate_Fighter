@@ -11,7 +11,10 @@ public class Winner : MonoBehaviour
 
     public GameObject playerOne;
     public GameObject playerTwo;
-
+    public TextMeshProUGUI p1name;
+    public TextMeshProUGUI p2name;
+    public Image p1image;
+    public Image p2image;
     StateManager playerState;
 
     public GameObject playerOneWinRoundOne, playerOneLoseRoundOne, playerOneWinRoundTwo, playerOneLoseRoundTwo;
@@ -29,6 +32,10 @@ public class Winner : MonoBehaviour
     void Start()
     {
         playerState = GetComponent<StateManager>();
+        p1name.text = GameManager.instance.currentCharacterPlayer1.name;
+        p1image.sprite = GameManager.instance.currentCharacterPlayer1.icon;
+        p2name.text = GameManager.instance.currentCharacterPlayer2.name;
+        p2image.sprite = GameManager.instance.currentCharacterPlayer2.icon;
     }
 
     public void nextRound()
