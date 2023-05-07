@@ -10,6 +10,7 @@ TagManager:
   - Player 2
   - Health 1
   - Health 2
+  - playbutton
   layers:
   - Default
   - TransparentFX
