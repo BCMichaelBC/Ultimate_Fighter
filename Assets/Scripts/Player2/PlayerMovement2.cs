@@ -73,7 +73,12 @@ public class PlayerMovement2 : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true; // youve hit the ground again
-            states.onGround = true;
+
+            if (states != null)
+            {
+                states.onGround = true;
+            }
+
             animator.SetBool("Jumping", false);
         }
     }
