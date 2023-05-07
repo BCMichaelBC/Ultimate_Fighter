@@ -11,10 +11,15 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] float jumpForce = 500.0f;
     [SerializeField] bool isGrounded = true;
     [SerializeField] Animator animator;
+    [SerializeField] Animator p2animator;
+    public Timer timerScript;
+    public Combat combatScript;
+
+
 
     //[SerializeField] 
 
-    StateManager states;
+    public StateManager states;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +37,12 @@ public class PlayerMovement2 : MonoBehaviour
     void Update()
     {
         // Getting the x values of movement from the player so if the player wants to move left or right
-        if (!states.dontMove)
+        if (!states.dontMove){
             movement = Input.GetAxis("Horizontal2");
-
+            combatScript.roundOver = false;
+        }else {
+            combatScript.roundOver = true;
+        }
         //Check if the player is moving, and changes the animation accordingly 
         animator.SetFloat("Speed", Mathf.Abs(movement));
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -72,11 +80,25 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            //timerScript.Reset();
+            isGrounded = true; // youve hit the ground again
+            states.onGround = true;
+            
+            animator.SetBool("Jumping", false);
+            
+           // timerScript.Reset();
+        }
+
+
+        /*if (collision.gameObject.tag == "Ground")
+        {
             isGrounded = true; // youve hit the ground again
             states.onGround = true;
             animator.SetBool("Jumping", false);
         }
+        */
     }
+    
 
     public void faceOpponent()
     {

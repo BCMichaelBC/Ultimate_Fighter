@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MapSelection.unity
     guid: b2b42c93712816f4db40fe3e7dcb3bad
   - enabled: 1
+    path: Assets/Scenes/NameSelection.unity
+    guid: 3b356dc10bc84486c84856b9618c0944
+  - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
     guid: b336c4e903a7c974c8fc15e29920f83b
   m_configObjects: {}

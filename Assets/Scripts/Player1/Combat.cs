@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    public Animator animatorp1;
     public Animator animator;
+    public Animator animatorp2;
+    public PlayerMovement p1Movement;
+    public PlayerMovement2 p2Movement;
+    public bool roundOver;
+    public float punchTimer = 5f;
+    
 
     StateManager states;
     // Start is called before the first frame update
@@ -18,11 +25,16 @@ public class Combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.L) && !states.isPlayerOne)) // To block
-        {
-            animator.SetBool("Blocking", true);
+        if(roundOver == false || !states.dontMove){
+            if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.L) && !states.isPlayerOne)) // To block
+        {if(states.isPlayerOne){
+            animatorp1.SetBool("Blocking", true);
+        }else if(states.isPlayerOne == false){
+            animatorp2.SetBool("Blocking", true);
+        }
             states.block = true;
             states.dontMove = true;
+        
             if (states.blockedDamage)
             {
                 Debug.Log(":D");
@@ -63,10 +75,26 @@ public class Combat : MonoBehaviour
         if (states.onGround && !states.crouch)
         {
             if ((Input.GetKeyDown(KeyCode.F) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.J) && !states.isPlayerOne)) // heavy punch
-            {
-                animator.SetBool("HPunch", true);
+            {if(states.isPlayerOne){
+                animatorp1.SetBool("HPunch", true);
+            }else if(states.isPlayerOne == false){
+                animatorp2.SetBool("HPunch", true);
+            }
+                punchTimer = 5f;
+                roundOver = true;
+                if(punchTimer > 0){
+                    punchTimer -= Time.time;
+                    roundOver = false;
+                }
+                    else if(punchTimer <= 0){
+                        punchTimer = 5f;
+                    }
                 //Debug.Log("You Heavy Punched");
                 states.SelectCombatCollider(0, 10);
+                
+                //animator.SetBool("HPunch", true);
+                //Debug.Log("You Heavy Punched");
+               // states.SelectCombatCollider(0, 10);
             }
             if ((Input.GetKeyDown(KeyCode.G) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.K) && !states.isPlayerOne)) // light punch
             {
@@ -93,6 +121,10 @@ public class Combat : MonoBehaviour
             }
         }
 
+        }
+        else {
+            return;
+        }
     }
 
     public void resetAnimators()
