@@ -8,7 +8,10 @@ public class Winner : MonoBehaviour
 {
     public TextMeshProUGUI TimerText;
     public Timer gameTimer;
-
+    public TextMeshProUGUI p1name;
+    public TextMeshProUGUI p2name;
+    public Image p1image;
+    public Image p2image;
     public GameObject playerOne;
     public GameObject playerTwo;
 
@@ -29,6 +32,12 @@ public class Winner : MonoBehaviour
     void Start()
     {
         playerState = GetComponent<StateManager>();
+        p1name.text = GameManager.instance.currentCharacterPlayer1.name;
+        p2name.text = GameManager.instance.currentCharacterPlayer2.name;
+        p1image.sprite = GameManager.instance.currentCharacterPlayer1.icon;
+        p2image.sprite = GameManager.instance.currentCharacterPlayer2.icon;
+
+
     }
 
     public void nextRound()

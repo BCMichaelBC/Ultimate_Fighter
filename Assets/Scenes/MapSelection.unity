@@ -1376,8 +1376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableObjects:
   - {fileID: 11400000, guid: c77a86c03084c0e43bbffff5e2d90770, type: 2}
-  - {fileID: 11400000, guid: ce5283fa05426c54fa1c42fccc13097a, type: 2}
-  - {fileID: 11400000, guid: fe009cbfc988f664ba5d3876b4fb7a58, type: 2}
+  - {fileID: 11400000, guid: 82c71e50eccc2f346ae3861f9f79eed1, type: 2}
+  - {fileID: 11400000, guid: 78fcb1d533a319f4583d82925c28ee24, type: 2}
   mapdisplay: {fileID: 1384984655}
 --- !u!1 &1543481651
 GameObject:
