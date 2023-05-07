@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigid = GetComponent<Rigidbody2D>();
         }
-        
+
     }
 
     // Update is called once per frame
@@ -49,10 +49,10 @@ public class PlayerMovement : MonoBehaviour
         faceOpponent();
     }
 
-// fixed update is for ui changes if chages were made in update they would look kinda cluncky
+    // fixed update is for ui changes if chages were made in update they would look kinda cluncky
     void FixedUpdate()
     {
-        
+
         rigid.velocity = new Vector2(movement * walkspeed, rigid.velocity.y);
         if (jumpPressed && isGrounded && !states.dontMove)
         {
@@ -87,13 +87,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void faceOpponent()
     {
-        if (transform.position.x - states.opponent.transform.position.x < 0)
+        if (states != null && states.opponent != null)
         {
-            states.lookLeft = false;
-        }
-        else
-        {
-            states.lookLeft = true;
+            if (transform.position.x - states.opponent.transform.position.x < 0)
+            {
+                states.lookLeft = false;
+            }
+            else
+            {
+                states.lookLeft = true;
+            }
         }
     }
 }
