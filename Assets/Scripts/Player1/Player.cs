@@ -34,6 +34,11 @@ public class Player : MonoBehaviour
 
     }
 
+    public void enable()
+    {
+        hpBar.enabled = true;
+    }
+
     public void CheckWinner()
     {
         if(playerUI.playerOneWins >= 2)

@@ -2018,7 +2018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.8630371, y: -1.7260132}
+  m_AnchoredPosition: {x: 0.8630371, y: -1.7260742}
   m_SizeDelta: {x: 32.7951, y: 31.0691}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953971558
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027122188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e10f4d3a83f4b23448ff342789fca836, type: 3}
   m_Name: 
@@ -3370,7 +3370,7 @@ MonoBehaviour:
   playerTwo: {fileID: 0}
   levelManager: {fileID: 1098424433}
   playerOneHealth: {fileID: 1465332774}
-  playerTwoHealth: {fileID: 1027122192}
+  playerTwoHealth: {fileID: 0}
   playerOneState: {fileID: 0}
   playerTwoState: {fileID: 0}
 --- !u!1 &2021622487
