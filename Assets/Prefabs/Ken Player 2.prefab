@@ -466,8 +466,8 @@ MonoBehaviour:
   isPlayerOne: 0
   vertical: 0
   horizontal: 0
-  Ldamage: 10
-  Hdamage: 20
+  Ldamage: 2.5
+  Hdamage: 5
   attack1: 0
   attack2: 0
   attack3: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   dontMove: 0
   block: 0
   blockedDamage: 0
-  onGround: 0
+  onGround: 1
   lookLeft: 1
   movementcolliders:
   - {fileID: 2181601845619753298}

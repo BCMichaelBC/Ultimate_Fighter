@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (states == null)
+        {
+            states = GetComponent<StateManager>();
+        }
         // Getting the x values of movement from the player so if the player wants to move left or right
         if (!states.dontMove)
         {
