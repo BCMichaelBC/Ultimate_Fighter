@@ -41,7 +41,6 @@ public class CSS : MonoBehaviour
                         P1isLocked = true;
                         GameManager.instance.LockCharacterPlayer1();
                         currentPlayer = 2;
-                        playerIndicator.text = "Player 2, choose your character.";
                     }
                 }
                 else if (currentPlayer == 2 && !P2isLocked)
