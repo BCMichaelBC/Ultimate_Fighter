@@ -15,4 +15,4 @@ MonoBehaviour:
   mapindex: 2
   mapname: LEVEL-3
   mapimage: {fileID: 21300000, guid: c9f349002cd2cb84e8d177b914bb0c8b, type: 3}
-  scenetoload: {fileID: 102900000, guid: 0c58206c5bb84f445bcfa2f0be58e19e, type: 3}
+  scenetoload: {fileID: 102900000, guid: 151e5da362f0068458661dbbf33f3368, type: 3}
