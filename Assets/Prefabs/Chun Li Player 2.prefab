@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 2246049080387603086}
   - component: {fileID: 2246049080387603087}
   - component: {fileID: 8806187800050234880}
+  - component: {fileID: -1555385278703495764}
   m_Layer: 6
   m_Name: Chun Li Player 2
   m_TagString: Player 2
@@ -398,6 +399,19 @@ MonoBehaviour:
   jumpForce: 250
   isGrounded: 1
   animator: {fileID: 2246049080387603082}
+--- !u!114 &-1555385278703495764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246049080387603084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567ff7245c5d189448f0569f8af7816f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 4
 --- !u!1 &2246049080530225192
 GameObject:
   m_ObjectHideFlags: 0

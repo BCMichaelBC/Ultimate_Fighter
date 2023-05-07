@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 12995521206550849}
   - component: {fileID: 12995521206550852}
   - component: {fileID: 12995521206550906}
+  - component: {fileID: 8868482745476958783}
   m_Layer: 6
   m_Name: Ryu Player 2
   m_TagString: Player 2
@@ -236,6 +237,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 0}
+--- !u!114 &8868482745476958783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12995521206550859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567ff7245c5d189448f0569f8af7816f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 4
 --- !u!1 &12995521373580388
 GameObject:
   m_ObjectHideFlags: 0
