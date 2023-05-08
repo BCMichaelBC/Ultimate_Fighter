@@ -8,5 +8,4 @@ public class Map : ScriptableObject
     public int mapindex;
     public string mapname;
     public Sprite mapimage;
-    public Object scenetoload;
 }

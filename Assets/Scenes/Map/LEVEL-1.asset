@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: LEVEL-1
   m_EditorClassIdentifier: 
   mapindex: 0
-  mapname: LEVEL-1
+  mapname: Level_1
   mapimage: {fileID: 21300000, guid: 5ec80ad759f4443f6b8fa50611c9f778, type: 3}
-  scenetoload: {fileID: 102900000, guid: 497046e4c5cf0447291e08cfd56ad057, type: 3}
