@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScriptableMapChanging : MonoBehaviour
 {
@@ -28,5 +29,9 @@ public class ScriptableMapChanging : MonoBehaviour
         {
             mapdisplay.DisplayMap((Map)scriptableObjects[currentindex]);
         }
+    }
+    public void ChangeMap()
+    {
+        SceneManager.LoadScene(mapdisplay.MapName.text);
     }
 }
