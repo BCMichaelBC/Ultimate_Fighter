@@ -2826,7 +2826,6 @@ GameObject:
   - component: {fileID: 1609257051}
   - component: {fileID: 1609257050}
   - component: {fileID: 1609257049}
-  - component: {fileID: 1609257048}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -2855,18 +2854,6 @@ RectTransform:
   m_AnchoredPosition: {x: 17.650862, y: -25}
   m_SizeDelta: {x: 114.91, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1609257048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609257046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ee97e4d043996469822166191a8add, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1609257049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2911,10 +2898,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1609257048}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 2002965189}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
