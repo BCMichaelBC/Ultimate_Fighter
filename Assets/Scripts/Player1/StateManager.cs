@@ -34,6 +34,12 @@ public class StateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(isPlayerOne){
+        opponent = GameObject.FindWithTag("Player 2");
+        }
+        if (isPlayerOne == false){
+            opponent = GameObject.FindWithTag("Player 1");
+        }
         CloseColliders(leftDamageColliders);
         CloseColliders(rightDamageColliders);
         sRenderer = GetComponent<SpriteRenderer>();
@@ -107,5 +113,9 @@ public class StateManager : MonoBehaviour
     public void StopAnimator()
     {
         GetComponent<Animator>().enabled = false;
+    }
+    public void StartAnimator()
+    {
+        GetComponent<Animator>().enabled = true;
     }
 }

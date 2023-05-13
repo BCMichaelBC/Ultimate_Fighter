@@ -11,10 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 500.0f;
     [SerializeField] bool isGrounded = true;
     [SerializeField] Animator animator;
+    [SerializeField] Animator p2animator;
+    public Timer timerScript;
+    public Combat combatScript;
 
-    //[SerializeField] 
-
-    StateManager states;
+    public StateManager states;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
         if (!states.dontMove)
         {
             movement = Input.GetAxis("Horizontal");
+            combatScript.roundOver = false;
+        }
+        else {
+            combatScript.roundOver = true;
         }
 
         //Check if the player is moving, and changes the animation accordingly 
@@ -89,8 +94,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Jumping", false);
         }
     }
-
-
+    void ResetGame()
+    {
+        animator.SetBool("NextRound", true);
+        p2animator.SetBool("NextRound", true);
+        timerScript.Reset();
+    }
     public void faceOpponent()
     {
         if (states != null && states.opponent != null)

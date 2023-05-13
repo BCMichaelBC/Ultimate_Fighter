@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public float Hp;
     public float maxHp;
     public HealthBar hpBar;
-    public Animator animator;
+    //public Animator animator;
+    public Animator animatorp1;
+    public Animator animatorp2;
+    
+    public Timer timerScript;
+    public Combat combatScriptp1;
+    public Combat combatScriptp2;
 
     StateManager states;
     public Winner playerUI;
@@ -26,6 +33,11 @@ public class Player : MonoBehaviour
             states.opponent = GameObject.FindWithTag("Player 1");
             hpBar = GameObject.FindWithTag("Health 2").GetComponent<HealthBar>();
         }
+       // animatorp1.GameObject.FindWithTag("Player 1").GetComponent<Animator>();
+       // animatorp2.GameObject.FindWithTag("Player 2").GetComponent<Animator>();
+        timerScript = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Timer>();
+        combatScriptp1 = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Combat>();
+        combatScriptp2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Combat>();
     }
 
     // Update is called once per frame
@@ -57,14 +69,28 @@ public class Player : MonoBehaviour
             }
     }
 
+    void ResetGame()
+    {
+        timerScript.Reset();
+    }
+
     public void TakeDamage()
     {
-        //Debug.Log("Damaged");
-        animator.SetTrigger("Hit");
+        if(states.isPlayerOne){
+        animatorp1.SetTrigger("Hit");
+        }
+        else if(states.isPlayerOne == false){
+        animatorp2.SetTrigger("Hit");
+        }
         states.health -= states.opponent.GetComponent<StateManager>().Ldamage;
 
         Hp = states.health;
-        animator.SetFloat("HP", Hp);
+        if(states.isPlayerOne){
+        animatorp1.SetFloat("HP", Hp);
+        }
+        else if(states.isPlayerOne == false){
+        animatorp2.SetFloat("HP", Hp);
+        }
         hpBar.UpdateHpBar();
 
 
@@ -73,7 +99,24 @@ public class Player : MonoBehaviour
 
             if(Hp <= 0)
             {
-                states.opponent.GetComponent<Player>().animator.SetTrigger("Win");
+            states.dontMove = true;
+            combatScriptp1.roundOver = true;
+            combatScriptp2.roundOver = true;
+            animatorp1.SetBool("NextRound", false);
+            animatorp2.SetBool("NextRound", false);
+            animatorp1.enabled = true;
+            animatorp2.enabled = true;
+            states.movementcolliders[1].SetActive(false);
+            timerScript.Start();
+            Invoke("ResetGame", 4.0f);
+
+
+            if(states.isPlayerOne == false){
+                states.opponent.GetComponent<Player>().animatorp1.SetTrigger("Win");
+            }
+            else if(states.isPlayerOne == true){
+                states.opponent.GetComponent<Player>().animatorp2.SetTrigger("Win");
+            }
                 if (playerUI.roundNumber == 1)
             {
                
@@ -82,7 +125,8 @@ public class Player : MonoBehaviour
 
                 playerUI.playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
-
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
                 playerUI.gameTimer.LevelTime = 90;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
                 states.health = 100;
@@ -101,6 +145,8 @@ public class Player : MonoBehaviour
 
                 playerUI.playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
 
                 playerUI.gameTimer.LevelTime = 90;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
@@ -120,7 +166,8 @@ public class Player : MonoBehaviour
 
                 playerUI.playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
-
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
                 playerUI.gameTimer.LevelTime = 90;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
                 states.health = 100;
@@ -139,10 +186,28 @@ public class Player : MonoBehaviour
 
         else if(states.isPlayerOne == false)
         {
+
             if(Hp <= 0)
             {
-                Debug.Log("Player 2 Win");
-                states.opponent.GetComponent<Player>().animator.SetTrigger("Win");
+            states.dontMove = true;
+            timerScript.Start();
+            Invoke("ResetGame", 4.0f);
+
+                combatScriptp1.roundOver = true;
+                combatScriptp2.roundOver = true;
+                Debug.Log("Player 1 Win");
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
+                if(states.isPlayerOne == false){
+                states.opponent.GetComponent<Player>().animatorp1.SetTrigger("Win");
+                //states.opponent.GetComponent<Player>().animatorp2.SetFloat("HP", 0);
+                animatorp1.SetBool("NextRound", false);
+                animatorp2.SetBool("NextRound", false);
+                }
+                else if (states.isPlayerOne == true){
+                   // states.opponent.GetComponent<Player>().animatorp1.SetFloat("HP", 0);
+                    states.opponent.GetComponent<Player>().animatorp2.SetTrigger("Win");
+                }
                 if (playerUI.roundNumber == 1)
             {
                if(states.isPlayerOne == false)
@@ -151,7 +216,8 @@ public class Player : MonoBehaviour
 
                 playerUI.playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
-
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
                 playerUI.gameTimer.LevelTime = 90;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
                 states.health = 100;
@@ -171,7 +237,8 @@ public class Player : MonoBehaviour
 
                 playerUI.playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
-
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
                 playerUI.gameTimer.LevelTime = 90;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
                 states.health = 100;
@@ -189,7 +256,8 @@ public class Player : MonoBehaviour
 
                 playerUI.playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
-
+                animatorp1.enabled = true;
+                animatorp2.enabled = true;
                 playerUI.gameTimer.LevelTime = 90;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
                 states.health = 100;

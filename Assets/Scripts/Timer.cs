@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     [SerializeField] public bool GamePaused = false;
     [SerializeField] public TextMeshProUGUI countdown;
     public bool didstart = false;
+    public bool newRound;
     public Player playerOne;
     public Player playerTwo;
     public Winner levelManager;
@@ -19,10 +20,15 @@ public class Timer : MonoBehaviour
     public HealthBar playerTwoHealth;
     public StateManager playerOneState;
     public StateManager playerTwoState;
+    public Animator p1Animator;
+    public Animator p2Animator;
+    public Combat combatScriptp1;
+    public Combat combatScriptp2;
+
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         countdown.gameObject.SetActive(false);
         TimerText.gameObject.SetActive(false);
@@ -83,26 +89,44 @@ public class Timer : MonoBehaviour
                 }
                 Reset();
             }
-            else if (playerTwo.Hp == playerOne.Hp)
+            else if(playerTwo.Hp == playerOne.Hp && newRound == false)
             {
-                print("Draw");
+                newRound = true;
+               print("test");
+               draw();
             }
         }
     }
+    public void draw(){
+        StartCoroutine("roundcountdown", 1f);
+        print("test2");
+        playerOne.transform.position = new Vector3(-6f, -0.5f, 0f);
+        playerTwo.transform.position = new Vector3(6f, -0.5f, 0f);
+             
+    }
 
-    void Reset()
+    public void Reset()
     {
         playerOne.CheckWinner();
-        playerOne.Hp = 100;
-        playerTwo.Hp = 100;
-        playerOneState.health = 100;
-        playerTwoState.health = 100;
-        playerOneHealth.UpdateHpBar();
-        playerTwoHealth.UpdateHpBar();
-        LevelTime = 90;
-        TimerText.text = Mathf.Round(LevelTime).ToString();
-        playerOne.transform.position = new Vector3(-6f, -1f, 0f);
-        playerTwo.transform.position = new Vector3(6f, -1f, 0f);
+            playerOne.Hp = 100;
+            playerTwo.Hp = 100;
+            playerOneState.health = 100;
+            playerTwoState.health = 100;
+            playerOneHealth.UpdateHpBar();
+            playerTwoHealth.UpdateHpBar();
+            TimerText.text = Mathf.Round(LevelTime).ToString();
+            p1Animator.SetFloat("HP", 100);
+            p2Animator.SetFloat("HP", 100);
+            p1Animator.SetBool("NextRound", true);
+            p2Animator.SetBool("NextRound", true);
+            combatScriptp1.roundOver = true;
+            combatScriptp2.roundOver = true;
+            p1Animator.enabled = true;
+            p2Animator.enabled = true;
+            playerOneState.StartAnimator();
+            playerTwoState.StartAnimator();
+            
+
     }
 
     void PauseGame()
@@ -129,6 +153,9 @@ public class Timer : MonoBehaviour
     }
     IEnumerator roundcountdown()
     {
+        
+        p1Animator.enabled = true;
+        p2Animator.enabled = true;
         countdown.gameObject.SetActive(true);
         countdown.text = "3";
         yield return new WaitForSeconds(1);
@@ -141,7 +168,17 @@ public class Timer : MonoBehaviour
         countdown.text = "Fight!";
         yield return new WaitForSeconds(1);
         countdown.gameObject.SetActive(false);
+        LevelTime=90;
         TimerText.gameObject.SetActive(true);
+        playerOneState.movementcolliders[0].SetActive(true);
+        playerOneState.movementcolliders[1].SetActive(true);
+        playerTwoState.movementcolliders[0].SetActive(true);
+        playerTwoState.movementcolliders[1].SetActive(true);
+        combatScriptp1.roundOver = false;
+        combatScriptp2.roundOver = false;
+        playerOneState.StartAnimator();
+        playerTwoState.StartAnimator();
         didstart = true;
+        newRound = false;
     }
 }
