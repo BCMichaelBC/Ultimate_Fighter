@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI TimerText;
-    [SerializeField] public float LevelTime = 90; //starting time 
+    [SerializeField] public float LevelTime = 60; //starting time 
     [SerializeField] public GameObject PausePanel;
     [SerializeField] public bool GamePaused = false;
     [SerializeField] public TextMeshProUGUI countdown;
@@ -199,7 +199,7 @@ public class Timer : MonoBehaviour
         countdown.text = "Fight!";
         yield return new WaitForSeconds(1);
         countdown.gameObject.SetActive(false);
-        LevelTime=90;
+        LevelTime=60;
         TimerText.gameObject.SetActive(true);
         playerOneState.movementcolliders[0].SetActive(true);
         playerOneState.movementcolliders[1].SetActive(true);

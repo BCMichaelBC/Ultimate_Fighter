@@ -70,6 +70,13 @@ public class GameManager : MonoBehaviour
             p2 = GameObject.FindGameObjectWithTag("Player 2");
         }
     }
+    void Update()
+    {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StartScreen")
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void SetCharacterPlayer1(Character character)
     {
