@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
                 playerUI.playerTwo.transform.position = new Vector3(6f, -1f, 0f);
                 animatorp1.enabled = true;
                 animatorp2.enabled = true;
-                playerUI.gameTimer.LevelTime = 90;
+                playerUI.gameTimer.LevelTime = 60;
                 playerUI.TimerText.text = Mathf.Round(playerUI.gameTimer.LevelTime).ToString();
                 states.health = 100;
                 Hp = 100;
