@@ -9,6 +9,8 @@ public class Winner : MonoBehaviour
     public TextMeshProUGUI TimerText;
     public Timer gameTimer;
 
+    public GameObject Player1VictoryPanel;
+    public GameObject Player2VictoryPanel;
     public GameObject playerOne;
     public GameObject playerTwo;
     public TextMeshProUGUI p1name;
@@ -36,6 +38,8 @@ public class Winner : MonoBehaviour
         p1image.sprite = GameManager.instance.currentCharacterPlayer1.icon;
         p2name.text = GameManager.instance.currentCharacterPlayer2.name;
         p2image.sprite = GameManager.instance.currentCharacterPlayer2.icon;
+        Player1VictoryPanel.gameObject.SetActive(false);
+        Player2VictoryPanel.gameObject.SetActive(false);
     }
 
     public void nextRound()
@@ -62,24 +66,28 @@ public class Winner : MonoBehaviour
             playerTwoWinRoundTwo.SetActive(true);
         }
 
-            if(playerOneWins >= 2)
-            {
-                print("Player One Wins");
-                ResetGame();
-            }
-            else if(playerTwoWins >= 2)
-            {
-                print("Player Two Wins");
-                ResetGame();
-            }
-            else if(playerOneWins == 1 && playerTwoWins == 1)
-            {
-                print("Round 3");
-            }
+        if(playerOneWins >= 2)
+        {
+            print("Player One Wins");
+                
+            ResetGame(Player1VictoryPanel);
+        }
+        else if(playerTwoWins >= 2)
+        {
+            print("Player Two Wins");
+            ResetGame(Player2VictoryPanel);
+        }
+        else if(playerOneWins == 1 && playerTwoWins == 1)
+        {
+            print("Round 3");
+        }
     }
 
-    public void ResetGame()
+
+    public void ResetGame(GameObject victoryPanel)
     {
+        victoryPanel.SetActive(true);
+        gameTimer.countdown.gameObject.SetActive(false);
         playerOne.transform.position = new Vector3(-6f, -1f, 0f);
         playerTwo.transform.position = new Vector3(6f, -1f, 0f);
 
