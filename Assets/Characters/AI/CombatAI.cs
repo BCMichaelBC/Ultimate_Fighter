@@ -15,6 +15,7 @@ public class CombatAI : MonoBehaviour
     [SerializeField] int numberAttack = 0;
     public bool attacking = true;
     public float atackRate = 2.0f;
+    public bool roundOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -128,6 +129,11 @@ public class CombatAI : MonoBehaviour
     IEnumerator waitAfterAttack()
     {
         yield return new WaitForSeconds(4f);
+        animator.SetBool("HPunch", false);
+        animator.SetBool("LPunch", false);
+        animator.SetBool("LKick", false);
+        animator.SetBool("HKick", false);
+
     }
     public void resetNumberAttack()
     {

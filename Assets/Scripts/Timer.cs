@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     [SerializeField] public bool GamePaused = false;
     [SerializeField] public TextMeshProUGUI countdown;
     public bool didstart = false;
+    public bool newRound;
     public Player playerOne;
     public Player playerTwo;
     public Winner levelManager;
@@ -19,14 +20,39 @@ public class Timer : MonoBehaviour
     public HealthBar playerTwoHealth;
     public StateManager playerOneState;
     public StateManager playerTwoState;
+    public Animator p1Animator;
+    public Animator p2Animator;
+    public Combat combatScriptp1;
+    public Combat combatScriptp2;
+    public CombatAI combatAIScriptp2;
+    public GameManager gameManagerScript;
+
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        playerOne = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Player>();
+        playerTwo = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Player>();
+        playerOneHealth = GameObject.FindGameObjectWithTag("Health 1").GetComponent<HealthBar>();
+        playerTwoHealth = GameObject.FindGameObjectWithTag("Health 2").GetComponent<HealthBar>();
+        playerOneState = GameObject.FindGameObjectWithTag("Player 1").GetComponent<StateManager>();
+        playerTwoState = GameObject.FindGameObjectWithTag("Player 2").GetComponent<StateManager>();
+        p1Animator = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Animator>();
+        p2Animator = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Animator>();
+        combatScriptp1 = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Combat>();
+        combatScriptp2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Combat>();
+        combatAIScriptp2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<CombatAI>();
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+
         countdown.gameObject.SetActive(false);
         TimerText.gameObject.SetActive(false);
+        gameManagerScript.timerScript = GameObject.Find("Canvas").GetComponent<Timer>();
+        //gameManagerScript.cssScript = GameObject.Find("Grid").GetComponent<CSS>();
+        Debug.Log("Test 1");
         StartCoroutine(roundcountdown());
+        Debug.Log("Test 2");
 
     }
 
@@ -83,26 +109,54 @@ public class Timer : MonoBehaviour
                 }
                 Reset();
             }
-            else if (playerTwo.Hp == playerOne.Hp)
+            else if(playerTwo.Hp == playerOne.Hp && newRound == false)
             {
-                print("Draw");
+                newRound = true;
+               //print("test");
+               draw();
             }
         }
     }
+    public void draw(){
+        StartCoroutine("roundcountdown", 1f);
+        //print("test2");
+        playerOne.transform.position = new Vector3(-6f, -0.5f, 0f);
+        playerTwo.transform.position = new Vector3(6f, -0.5f, 0f);
+             
+    }
 
-    void Reset()
+    public void Reset()
     {
         playerOne.CheckWinner();
-        playerOne.Hp = 100;
-        playerTwo.Hp = 100;
-        playerOneState.health = 100;
-        playerTwoState.health = 100;
-        playerOneHealth.UpdateHpBar();
-        playerTwoHealth.UpdateHpBar();
-        LevelTime = 90;
-        TimerText.text = Mathf.Round(LevelTime).ToString();
-        playerOne.transform.position = new Vector3(-6f, -1f, 0f);
-        playerTwo.transform.position = new Vector3(6f, -1f, 0f);
+            playerOne.Hp = 100;
+            playerTwo.Hp = 100;
+            playerOneState.health = 100;
+            playerTwoState.health = 100;
+            playerOneHealth.UpdateHpBar();
+            playerTwoHealth.UpdateHpBar();
+            TimerText.text = Mathf.Round(LevelTime).ToString();
+            p1Animator.SetFloat("HP", 100);
+            p2Animator.SetFloat("HP", 100);
+            p1Animator.SetBool("NextRound", true);
+            p2Animator.SetBool("NextRound", true);
+            combatScriptp1.roundOver = true;
+        if(combatScriptp2 == null)
+        {
+            combatAIScriptp2.roundOver = true;
+        }
+        else
+        {
+            combatScriptp2.roundOver = true;
+        }
+            
+            p1Animator.enabled = true;
+            p2Animator.enabled = true;
+            playerOneState.StartAnimator();
+            playerTwoState.StartAnimator();
+        p1Animator.SetTrigger("NewRound");
+        p2Animator.SetTrigger("NewRound");
+
+
     }
 
     void PauseGame()
@@ -127,8 +181,12 @@ public class Timer : MonoBehaviour
         Time.timeScale = 1f;
 
     }
-    IEnumerator roundcountdown()
+    public IEnumerator roundcountdown()
     {
+        playerOneState.dontMove = true;
+        playerTwoState.dontMove = true;
+        p1Animator.enabled = true;
+        p2Animator.enabled = true;
         countdown.gameObject.SetActive(true);
         countdown.text = "3";
         yield return new WaitForSeconds(1);
@@ -141,7 +199,27 @@ public class Timer : MonoBehaviour
         countdown.text = "Fight!";
         yield return new WaitForSeconds(1);
         countdown.gameObject.SetActive(false);
+        LevelTime=90;
         TimerText.gameObject.SetActive(true);
+        playerOneState.movementcolliders[0].SetActive(true);
+        playerOneState.movementcolliders[1].SetActive(true);
+        playerTwoState.movementcolliders[0].SetActive(true);
+        playerTwoState.movementcolliders[1].SetActive(true);
+        combatScriptp1.roundOver = false;
+        if (combatScriptp2 == null)
+        {
+            combatAIScriptp2.roundOver = false;
+        }
+        else
+        {
+            combatScriptp2.roundOver = false;
+        }
+            
+        playerOneState.StartAnimator();
+        playerTwoState.StartAnimator();
         didstart = true;
+        newRound = false;
+        playerOneState.dontMove = false;
+        playerTwoState.dontMove = false;
     }
 }

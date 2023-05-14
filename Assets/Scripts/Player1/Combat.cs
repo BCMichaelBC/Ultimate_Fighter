@@ -4,13 +4,22 @@ using UnityEngine;
 
 
 public class Combat : MonoBehaviour
-{
+{   
+    public Animator animatorp1;
     public Animator animator;
+    public Animator animatorp2;
+    //public PlayerMovement p1Movement;
+    //public PlayerMovement2 p2Movement;
+    public bool roundOver;
+    public float punchTimer = 5f;
 
     StateManager states;
     // Start is called before the first frame update
     void Start()
     {
+        animator = this.GetComponent<Animator>();
+        animatorp1 = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Animator>();
+        animatorp2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Animator>();
         states = GetComponent<StateManager>();
         
     }
@@ -18,9 +27,15 @@ public class Combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.L) && !states.isPlayerOne)) // To block
-        {
-            animator.SetBool("Blocking", true);
+        if(roundOver == false || !states.dontMove){
+            if ((Input.GetKey(KeyCode.H) && states.isPlayerOne) || (Input.GetKey(KeyCode.L) && !states.isPlayerOne)) // To block
+            {
+                if(states.isPlayerOne){
+                animatorp1.SetBool("Blocking", true);
+                }
+                else if(states.isPlayerOne == false){
+                animatorp2.SetBool("Blocking", true);
+                }
             states.block = true;
             states.dontMove = true;
             if (states.blockedDamage)
@@ -35,8 +50,21 @@ public class Combat : MonoBehaviour
             animator.SetBool("Blocking", false);
             states.block = false;
         }
-        
-        if ((Input.GetKey(KeyCode.S) && states.isPlayerOne) || (Input.GetKey(KeyCode.DownArrow) && !states.isPlayerOne)) // To crouch
+
+            if ((Input.GetKeyUp(KeyCode.H) && states.isPlayerOne) || (Input.GetKeyUp(KeyCode.L) && !states.isPlayerOne)) // To block
+                if (states.isPlayerOne)
+                {
+                    animatorp1.SetBool("Blocking", true);
+                }
+                else if (states.isPlayerOne == false)
+                {
+                    animatorp2.SetBool("Blocking", true);
+                }
+            states.block = false;
+            states.dontMove = false;
+
+
+            if ((Input.GetKey(KeyCode.S) && states.isPlayerOne) || (Input.GetKey(KeyCode.DownArrow) && !states.isPlayerOne)) // To crouch
         {
             animator.SetBool("Crouching", true);
             states.movementcolliders[0].SetActive(false);
@@ -63,8 +91,21 @@ public class Combat : MonoBehaviour
         if (states.onGround && !states.crouch)
         {
             if ((Input.GetKeyDown(KeyCode.F) && states.isPlayerOne) || (Input.GetKeyDown(KeyCode.J) && !states.isPlayerOne)) // heavy punch
-            {
-                animator.SetBool("HPunch", true);
+            {if(states.isPlayerOne){
+                animatorp1.SetBool("HPunch", true);
+            }else if(states.isPlayerOne == false){
+                animatorp2.SetBool("HPunch", true);
+            }
+                punchTimer = 5f;
+                roundOver = true;
+                if(punchTimer > 0){
+                    punchTimer -= Time.time;
+                    roundOver = false;
+                }
+                    else if(punchTimer <= 0){
+                        punchTimer = 5f;
+                    }
+                //animator.SetBool("HPunch", true);
                 //Debug.Log("You Heavy Punched");
                 states.SelectCombatCollider(0, 10);
             }
@@ -92,7 +133,10 @@ public class Combat : MonoBehaviour
                 states.SelectCombatCollider(1, 10);
             }
         }
-
+        }
+        else {
+            return;
+        }
     }
 
     public void resetAnimators()

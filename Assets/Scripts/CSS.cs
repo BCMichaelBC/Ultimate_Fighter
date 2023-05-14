@@ -12,6 +12,7 @@ public class CSS : MonoBehaviour
     private bool P1isLocked = false;
     private bool P2isLocked = false;
     private int currentPlayer = 1;
+    public bool p2Ken, p2Ryu = true, p2Chun;
     [SerializeField] private Image player1Image;
     [SerializeField] private Image player2Image;
     private void Start()
@@ -65,6 +66,11 @@ public class CSS : MonoBehaviour
 
             Image artwork = option.GetComponentInChildren<Image>();
             artwork.sprite = c.icon;
+
+            //p2Ryu = true;
+            //player2Image.gameObject.SetActive(true);
+            //player2Image.sprite = GameManager.instance.characters[0].icon;
+            //GameManager.instance.SetCharacterPlayer2(GameManager.instance.characters[0]);
         }
     }
 
@@ -78,6 +84,32 @@ public class CSS : MonoBehaviour
         {
             prevCharacter.localScale = Vector3.Lerp(prevCharacter.localScale, new Vector3(1f, 1f, 1f), Time.deltaTime * 10);
         }
+        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            p2Ryu = true;
+            p2Chun = false;
+            p2Ken = false;
+            player2Image.gameObject.SetActive(true);
+            player2Image.sprite = GameManager.instance.characters[0].icon;
+            GameManager.instance.SetCharacterPlayer2(GameManager.instance.characters[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            p2Ryu = false;
+            p2Chun = true;
+            p2Ken = false;
+            player2Image.gameObject.SetActive(true);
+            player2Image.sprite = GameManager.instance.characters[1].icon;
+            GameManager.instance.SetCharacterPlayer2(GameManager.instance.characters[1]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            p2Ryu = false;
+            p2Chun = false;
+            p2Ken = true;
+            player2Image.gameObject.SetActive(true);
+            player2Image.sprite = GameManager.instance.characters[2].icon;
+            GameManager.instance.SetCharacterPlayer2(GameManager.instance.characters[2]);
+        }
     }
 }
-
