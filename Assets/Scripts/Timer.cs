@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField] public float LevelTime = 60; //starting time 
     [SerializeField] public GameObject PausePanel;
     [SerializeField] public bool GamePaused = false;
-    [SerializeField] public TextMeshProUGUI countdown;
+    public TextMeshProUGUI countdown;
     public bool didstart = false;
     public bool newRound;
     public Player playerOne;
@@ -94,6 +94,7 @@ public class Timer : MonoBehaviour
                     levelManager.playerOneWinRoundTwo.SetActive(true);
                 }
                 Reset();
+
             }
             else if (playerTwo.Hp > playerOne.Hp)
             {
@@ -181,6 +182,7 @@ public class Timer : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+
     public IEnumerator roundcountdown()
     {
         playerOneState.dontMove = true;

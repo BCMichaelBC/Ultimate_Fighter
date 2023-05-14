@@ -68,12 +68,12 @@ public class Player : MonoBehaviour
         if(playerUI.playerOneWins >= 2)
             {
                 print("Player One Wins");
-                playerUI.ResetGame();
+                playerUI.ResetGame(playerUI.Player1VictoryPanel);
             }
             else if(playerUI.playerTwoWins >= 2)
             {
                 print("Player Two Wins");
-                playerUI.ResetGame();
+                playerUI.ResetGame(playerUI.Player2VictoryPanel);
             }
             else if(playerUI.playerOneWins == 1 && playerUI.playerTwoWins == 1)
             {
