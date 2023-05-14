@@ -13,6 +13,8 @@ public class PlayerMovementAI : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] GameObject playerAI;
     [SerializeField] CombatAI combat;
+    public Combat playerOneCombat;
+    public Combat playerTwoCombat;
 
 
 
@@ -29,6 +31,8 @@ public class PlayerMovementAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerOneCombat = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Combat>();
+        playerTwoCombat = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Combat>();
         states = GetComponent<StateManager>();
         // we do this to get the component rigid body form inspector so we can interact with it in code
         if (rigid == null)
@@ -71,7 +75,7 @@ public class PlayerMovementAI : MonoBehaviour
         // new movement script for the AI 
         if(oppDistance > attackDistance)
         {
-            if(moveAI) // far from opponet and needs to walk there 
+            if(moveAI && playerOneCombat.roundOver == false) // far from opponet and needs to walk there 
             {
                 moveAI = true;
                 animator.SetBool("Walking", true);
@@ -85,7 +89,7 @@ public class PlayerMovementAI : MonoBehaviour
         }
         else
         {
-            if(moveAI) // far from opponent but can just stand there
+            if(moveAI && playerOneCombat.roundOver == false) // far from opponent but can just stand there
             {
                 moveAI = true;
                 animator.SetBool("CanAttack", false);
