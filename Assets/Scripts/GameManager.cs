@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour
     public Character currentCharacterPlayer2;
     public GameObject p1;
     public GameObject p2;
+    //public GameObject p2Ryu, p2Chun, p2Ken;
     private bool isPlayer1Locked = false;
     private bool isPlayer2Locked = false;
+    public CSS cssScript;
+    public Timer timerScript;
 
     private void Awake()
     {
@@ -29,10 +32,42 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        cssScript = GameObject.Find("Grid").GetComponent<CSS>();
+        if(timerScript == null)
+        {
+            try
+            {
+                timerScript = GameObject.Find("Canvas").GetComponent<Timer>();
+            }
+            catch
+            {
+                return;
+            }
+            
+        }
+        
+
         if (characters.Length > 0)
         {
             currentCharacterPlayer1 = characters[0];
             currentCharacterPlayer2 = characters[0];
+        }
+        if(cssScript.p2Ryu == true)
+        {
+            //p2Ryu.SetActive(true);
+            p2 = GameObject.FindGameObjectWithTag("Player 2");
+            timerScript.p1Animator = GameObject.FindGameObjectWithTag("Player 1").GetComponent<Animator>();
+            timerScript.p2Animator = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Animator>();
+        }
+        if (cssScript.p2Chun == true)
+        {
+            //p2Chun.SetActive(true);
+            p2 = GameObject.FindGameObjectWithTag("Player 2");
+        }
+        if (cssScript.p2Ken == true)
+        {
+            //p2Ken.SetActive(true);
+            p2 = GameObject.FindGameObjectWithTag("Player 2");
         }
     }
 

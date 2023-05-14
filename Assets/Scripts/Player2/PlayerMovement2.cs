@@ -11,6 +11,9 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] float jumpForce = 500.0f;
     [SerializeField] bool isGrounded = true;
     [SerializeField] Animator animator;
+    [SerializeField] Animator p2animator;
+    public Timer timerScript;
+    public Combat combatScript;
 
     //[SerializeField] 
 
@@ -19,6 +22,9 @@ public class PlayerMovement2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        p2animator = this.GetComponent<Animator>();
+        timerScript = GameObject.Find("Canvas").GetComponent<Timer>();
+        combatScript = this.GetComponent<Combat>();
         states = GetComponent<StateManager>();
         // we do this to get the component rigid body form inspector so we can interact with it in code
         if (rigid == null)
@@ -32,9 +38,12 @@ public class PlayerMovement2 : MonoBehaviour
     void Update()
     {
         // Getting the x values of movement from the player so if the player wants to move left or right
-        if (!states.dontMove)
+        if (!states.dontMove){
             movement = Input.GetAxis("Horizontal2");
-
+            combatScript.roundOver = false;
+        }else {
+            combatScript.roundOver = true;
+        }
         //Check if the player is moving, and changes the animation accordingly 
         animator.SetFloat("Speed", Mathf.Abs(movement));
         if (Input.GetKeyDown(KeyCode.UpArrow))

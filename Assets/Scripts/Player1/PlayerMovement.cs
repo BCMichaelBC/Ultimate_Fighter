@@ -11,14 +11,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 500.0f;
     [SerializeField] bool isGrounded = true;
     [SerializeField] Animator animator;
+    [SerializeField] Animator p2animator;
+    public Timer timerScript;
+    public Combat combatScript;
 
-    //[SerializeField] 
-
-    StateManager states;
+    public StateManager states;
 
     // Start is called before the first frame update
     void Start()
     {
+        p2animator = GameObject.FindGameObjectWithTag("Player 2").GetComponent<Animator>();
+        timerScript = GameObject.Find("Canvas").GetComponent<Timer>();
+        combatScript = this.GetComponent<Combat>();
         states = GetComponent<StateManager>();
         // we do this to get the component rigid body form inspector so we can interact with it in code
         if (rigid == null)
@@ -39,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
         if (!states.dontMove)
         {
             movement = Input.GetAxis("Horizontal");
+            combatScript.roundOver = false;
+        }
+        else {
+            combatScript.roundOver = true;
         }
 
         //Check if the player is moving, and changes the animation accordingly 
@@ -89,8 +97,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Jumping", false);
         }
     }
-
-
+    void ResetGame()
+    {
+        animator.SetBool("NextRound", true);
+        p2animator.SetBool("NextRound", true);
+        timerScript.Reset();
+    }
     public void faceOpponent()
     {
         if (states != null && states.opponent != null)
