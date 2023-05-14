@@ -2191,7 +2191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21, y: 90.269}
+  m_AnchoredPosition: {x: 21, y: 135}
   m_SizeDelta: {x: 1621.3551, y: 303.2162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600975309
@@ -2216,7 +2216,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2022Browse which level you would like to play in press begin to go to
     character selection.\n\n\u2022Select which character you want to play and press
-    ENTER to lock in your choice."
+    ENTER to lock in your choice, press P when you want to pause."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
