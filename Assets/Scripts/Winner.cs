@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Winner : MonoBehaviour
 {
@@ -49,35 +50,35 @@ public class Winner : MonoBehaviour
         gameTimer.LevelTime = 90;
         TimerText.text = Mathf.Round(gameTimer.LevelTime).ToString();
 
-        if(playerOneWins == 1)
+        if (playerOneWins == 1)
         {
             playerOneWinRoundOne.SetActive(true);
         }
-        if(playerOneWins == 2)
+        if (playerOneWins == 2)
         {
             playerOneWinRoundTwo.SetActive(true);
         }
-        if(playerTwoWins == 1)
+        if (playerTwoWins == 1)
         {
             playerTwoWinRoundOne.SetActive(true);
         }
-        if(playerTwoWins == 2)
+        if (playerTwoWins == 2)
         {
             playerTwoWinRoundTwo.SetActive(true);
         }
 
-        if(playerOneWins >= 2)
+        if (playerOneWins >= 2)
         {
             print("Player One Wins");
-                
+
             ResetGame(Player1VictoryPanel);
         }
-        else if(playerTwoWins >= 2)
+        else if (playerTwoWins >= 2)
         {
             print("Player Two Wins");
             ResetGame(Player2VictoryPanel);
         }
-        else if(playerOneWins == 1 && playerTwoWins == 1)
+        else if (playerOneWins == 1 && playerTwoWins == 1)
         {
             print("Round 3");
         }
@@ -94,6 +95,7 @@ public class Winner : MonoBehaviour
         Time.timeScale = 0;
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -101,19 +103,19 @@ public class Winner : MonoBehaviour
         {
             if (roundNumber == 1)
             {
-               if(playerState.isPlayerOne)
-               {
-                   playerOneWinRoundOne.SetActive(true);
+                if (playerState.isPlayerOne)
+                {
+                    playerOneWinRoundOne.SetActive(true);
 
-                playerOne.transform.position = new Vector3(-6f, -1f, 0f);
-                playerTwo.transform.position = new Vector3(6f, -1f, 0f);
+                    playerOne.transform.position = new Vector3(-6f, -1f, 0f);
+                    playerTwo.transform.position = new Vector3(6f, -1f, 0f);
 
-                gameTimer.LevelTime = 90;
-                TimerText.text = Mathf.Round(gameTimer.LevelTime).ToString();
+                    gameTimer.LevelTime = 90;
+                    TimerText.text = Mathf.Round(gameTimer.LevelTime).ToString();
 
-                playerOneWins++;
-                roundNumber++;
-               }
+                    playerOneWins++;
+                    roundNumber++;
+                }
             }
             else if (roundNumber == 2)
             {
@@ -136,7 +138,7 @@ public class Winner : MonoBehaviour
             if (roundNumber == 1)
             {
 
-              playerTwoWinRoundOne.SetActive(true);
+                playerTwoWinRoundOne.SetActive(true);
 
                 playerOne.transform.position = new Vector3(-6f, -1f, 0f);
                 playerTwo.transform.position = new Vector3(6f, -1f, 0f);
@@ -149,12 +151,12 @@ public class Winner : MonoBehaviour
             }
             else if (roundNumber == 2)
             {
-    
+
                 playerTwoWins++;
                 roundNumber++;
 
                 nextRound();
-               
+
             }
             else if (roundNumber == 3)
             {
@@ -168,7 +170,23 @@ public class Winner : MonoBehaviour
         }
 
 
-
-        
     }
+
+    public void PvPRestart()
+    {
+        SceneManager.LoadScene("HowToPlay");
+        Player1VictoryPanel.SetActive(false);
+        Player2VictoryPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void PvAIRestart()
+    {
+        SceneManager.LoadScene("HowToPlayAI");
+        Player1VictoryPanel.SetActive(false);
+        Player2VictoryPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+
 }
