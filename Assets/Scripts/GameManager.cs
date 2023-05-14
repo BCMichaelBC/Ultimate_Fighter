@@ -72,7 +72,11 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StartScreen")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "HowToPlay")
+        {
+            Destroy(gameObject);
+        }
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "HowToPlayAI")
         {
             Destroy(gameObject);
         }
